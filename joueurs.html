@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>LAN Party - Joueurs</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+    <header>
+      <h1>🎮 LAN : Legacy</h1>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="jeux.html">Jeux</a>
+        <a href="equipes.html">Équipes</a>
+        <a href="joueurs.html">Joueurs</a>
+        <a href="classement.html">Classement</a>
+        <a href="planning.html">Planning</a>
+      </nav>
+    </header>
+
+    <main>
+
+  <h2>Les Joueurs</h2>
+  <p class="sous-titre">Eh mais t'es un minable ! Et tu te crois le meilleur gamer du monde ? Mais c'est incroyable, ça.</p>
+ 
+  <div class="joueurs-grille">
+
+    <!-- JOUEUR 1 -->
+    <div class="joueur-carte-equipe-1">
+      <div class="joueur-header-equipe-1">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 1</h3>
+          <span class="joueur-equipe">Équipe 1</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur1">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne">
+          <label>Rocket League</label>
+          <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="rocket-league">
+        </div>
+        <div class="note-ligne">
+          <label>The Finals</label>
+          <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="the-finals">
+        </div>
+        <div class="note-ligne">
+          <label>We Need to Go Deeper</label>
+          <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="wntgd">
+        </div>
+        <div class="note-ligne">
+          <label>Party Animals</label>
+          <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="party-animals">
+        </div>
+        <div class="note-ligne">
+          <label>Left 4 Dead 2</label>
+          <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="l4d2">
+        </div>
+        <div class="note-ligne">
+          <label>Golf It</label>
+          <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="golf-it">
+        </div>
+        <div class="note-ligne">
+          <label>Age of Empires 1</label>
+          <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="aoe1">
+        </div>
+        <div class="note-ligne">
+          <label>Among Us</label>
+          <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="among-us">
+        </div>
+        <div class="note-ligne">
+          <label>Nidhogg</label>
+          <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="nidhogg">
+        </div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur1')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur1"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 2 -->
+    <div class="joueur-carte-equipe-1">
+      <div class="joueur-header-equipe-1">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 2</h3>
+          <span class="joueur-equipe">Équipe 1</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur2">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur2')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur2"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 3 -->
+    <div class="joueur-carte-equipe-1">
+      <div class="joueur-header-equipe-1">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 3</h3>
+          <span class="joueur-equipe">Équipe 1</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur3">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur3')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur3"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 4 -->
+    <div class="joueur-carte-equipe-2">
+      <div class="joueur-header-equipe-2">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 4</h3>
+          <span class="joueur-equipe">Équipe 2</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur4">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur4')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur4"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 5 -->
+    <div class="joueur-carte-equipe-2">
+      <div class="joueur-header-equipe-2">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 5</h3>
+          <span class="joueur-equipe">Équipe 2</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur5">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur5')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur5"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 6 -->
+    <div class="joueur-carte-equipe-2">
+      <div class="joueur-header-equipe-2">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 6</h3>
+          <span class="joueur-equipe">Équipe 2</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur6">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur6')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur6"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 7 -->
+    <div class="joueur-carte-equipe-3">
+      <div class="joueur-header-equipe-3">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 7</h3>
+          <span class="joueur-equipe">Équipe 3</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur7">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur7')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur7"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 8 -->
+    <div class="joueur-carte-equipe-3">
+      <div class="joueur-header-equipe-3">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 8</h3>
+          <span class="joueur-equipe">Équipe 3</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur8">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur8')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur8"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 9 -->
+    <div class="joueur-carte-equipe-3">
+      <div class="joueur-header-equipe-3">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 9</h3>
+          <span class="joueur-equipe">Équipe 3</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur9">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur9')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur9"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 10 -->
+    <div class="joueur-carte-equipe-4">
+      <div class="joueur-header-equipe-4">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 10</h3>
+          <span class="joueur-equipe">Équipe 4</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur10">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur10')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur10"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 11 -->
+    <div class="joueur-carte-equipe-4">
+      <div class="joueur-header-equipe-4">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 11</h3>
+          <span class="joueur-equipe">Équipe 4</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur11">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur11')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur11"></p>
+      </div>
+    </div>
+
+    <!-- JOUEUR 12 -->
+    <div class="joueur-carte-equipe-4">
+      <div class="joueur-header-equipe-4">
+        <span class="joueur-avatar">🎮</span>
+        <div>
+          <h3 class="joueur-pseudo">Joueur 12</h3>
+          <span class="joueur-equipe">Équipe 4</span>
+        </div>
+      </div>
+      <div class="joueur-notes" id="notes-joueur12">
+        <h4>PGM ou un noob</h4>
+        <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="rocket-league"></div>
+        <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="the-finals"></div>
+        <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="wntgd"></div>
+        <div class="note-ligne"><label>Party Animals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="party-animals"></div>
+        <div class="note-ligne"><label>Left 4 Dead 2</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="l4d2"></div>
+        <div class="note-ligne"><label>Golf It</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="golf-it"></div>
+        <div class="note-ligne"><label>Age of Empires 1</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="aoe1"></div>
+        <div class="note-ligne"><label>Among Us</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="among-us"></div>
+        <div class="note-ligne"><label>Nidhogg</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="nidhogg"></div>
+        <button class="btn-sauvegarder" onclick="sauvegarderNotes('joueur12')">💾 Sauvegarder mes notes</button>
+        <p class="save-confirmation" id="confirm-joueur12"></p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+    <footer>
+      <p>LAN 2026</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

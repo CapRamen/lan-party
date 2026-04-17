@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>LAN Party - Classement</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <header>
+      <h1>🎮 LAN : Legacy</h1>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="jeux.html">Jeux</a>
+        <a href="equipes.html">Équipes</a>
+        <a href="joueurs.html">Joueurs</a>
+        <a href="classement.html">Classement</a>
+        <a href="planning.html">Planning</a>
+      </nav>
+    </header>
+
+    <main>
+
+  <h2>Classement Général</h2>
+  <p class="sous-titre">C’est l’histoire d’un homme qui tombe d’un immeuble de 50 étages. Le mec, au fur et à mesure de sa chute, il se répète sans cesse pour se rassurer : “Jusqu’ici tout va bien… Jusqu’ici tout va bien… Jusqu’ici tout va bien.” Mais l’important, ce n’est pas la chute. C’est l’atterrissage. </p>
+
+  <!-- PODIUM -->
+  <div class="podium" id="podium">
+    <div class="podium-place" id="podium-2">
+      <div class="podium-nom">—</div>
+      <div class="podium-pts">0 pts</div>
+      <div class="podium-bloc podium-argent">🥈<br>2e</div>
+    </div>
+    <div class="podium-place" id="podium-1">
+      <div class="podium-nom">—</div>
+      <div class="podium-pts">0 pts</div>
+      <div class="podium-bloc podium-or">🥇<br>1er</div>
+    </div>
+    <div class="podium-place" id="podium-3">
+      <div class="podium-nom">—</div>
+      <div class="podium-pts">0 pts</div>
+      <div class="podium-bloc podium-bronze">🥉<br>3e</div>
+    </div>
+    <div class="podium-place" id="podium-4">
+      <div class="podium-nom">—</div>
+      <div class="podium-pts">0 pts</div>
+      <div class="podium-bloc podium-quatrieme">4e</div>
+    </div>
+  </div>
+
+  <!-- TABLEAU DES SCORES -->
+  <div class="scores-section">
+    <h3>Détail des points par jeu</h3>
+    <p class="sous-titre">Clique sur un score pour le modifier, puis appuie sur Entrée ou clique ailleurs pour valider.</p>
+
+    <div class="tableau-wrapper">
+      <table class="tableau-scores" id="tableau-scores">
+        <thead>
+          <tr>
+            <th>Jeu</th>
+            <th class="col-equipe equipe-1-color">Équipe 1</th>
+            <th class="col-equipe equipe-2-color">Équipe 2</th>
+            <th class="col-equipe equipe-3-color">Équipe 3</th>
+            <th class="col-equipe equipe-4-color">Équipe 4</th>
+            <th>Max par équipe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🚗 Rocket League</td>
+            <td><span class="score-cell" data-jeu="rocket-league" data-equipe="1">0</span></td>
+            <td><span class="score-cell" data-jeu="rocket-league" data-equipe="2">0</span></td>
+            <td><span class="score-cell" data-jeu="rocket-league" data-equipe="3">0</span></td>
+            <td><span class="score-cell" data-jeu="rocket-league" data-equipe="4">0</span></td>
+            <td class="max-pts">15</td>
+          </tr>
+          <tr>
+            <td>🔫 The Finals</td>
+            <td><span class="score-cell" data-jeu="the-finals" data-equipe="1">0</span></td>
+            <td><span class="score-cell" data-jeu="the-finals" data-equipe="2">0</span></td>
+            <td><span class="score-cell" data-jeu="the-finals" data-equipe="3">0</span></td>
+            <td><span class="score-cell" data-jeu="the-finals" data-equipe="4">0</span></td>
+            <td class="max-pts">15</td>
+          </tr>
+          <tr>
+            <td>🌊 We Need to Go Deeper</td>
+            <td><span class="score-cell" data-jeu="wntgd" data-equipe="1">0</span></td>
+            <td><span class="score-cell" data-jeu="wntgd" data-equipe="2">0</span></td>
+            <td><span class="score-cell" data-jeu="wntgd" data-equipe="3">0</span></td>
+            <td><span class="score-cell" data-jeu="wntgd" data-equipe="4">0</span></td>
+            <td class="max-pts">15</td>
+          </tr>
+          <tr>
+            <td>🐾 Party Animals</td>
+            <td><span class="score-cell" data-jeu="party-animals" data-equipe="1">0</span></td>
+            <td><span class="score-cell" data-jeu="party-animals" data-equipe="2">0</span></td>
+            <td><span class="score-cell" data-jeu="party-animals" data-equipe="3">0</span></td>
+            <td><span class="score-cell" data-jeu="party-animals" data-equipe="4">0</span></td>
+            <td class="max-pts">15</td>
+          </tr>
+          <tr>
+            <td>🧟 Left 4 Dead 2</td>
+            <td><span class="score-cell" data-jeu="l4d2" data-equipe="1">0</span></td>
+            <td><span class="score-cell" data-jeu="l4d2" data-equipe="2">0</span></td>
+            <td><span class="score-cell" data-jeu="l4d2" data-equipe="3">0</span></td>
+            <td><span class="score-cell" data-jeu="l4d2" data-equipe="4">0</span></td>
+            <td class="max-pts">15</td>
+          </tr>
+          <tr>
+            <td>⛳ Golf It</td>
+            <td><span class="score-cell" data-jeu="golf-it" data-equipe="1">0</span></td>
+            <td><span class="score-cell" data-jeu="golf-it" data-equipe="2">0</span></td>
+            <td><span class="score-cell" data-jeu="golf-it" data-equipe="3">0</span></td>
+            <td><span class="score-cell" data-jeu="golf-it" data-equipe="4">0</span></td>
+            <td class="max-pts">15</td>
+          </tr>
+          <tr>
+            <td>⚔️ Age of Empires 1</td>
+            <td><span class="score-cell" data-jeu="aoe1" data-equipe="1">0</span></td>
+            <td><span class="score-cell" data-jeu="aoe1" data-equipe="2">0</span></td>
+            <td><span class="score-cell" data-jeu="aoe1" data-equipe="3">0</span></td>
+            <td><span class="score-cell" data-jeu="aoe1" data-equipe="4">0</span></td>
+            <td class="max-pts">15</td>
+          </tr>
+          <tr>
+            <td>🔪 Among Us</td>
+            <td><span class="score-cell" data-jeu="among-us" data-equipe="1">0</span></td>
+            <td><span class="score-cell" data-jeu="among-us" data-equipe="2">0</span></td>
+            <td><span class="score-cell" data-jeu="among-us" data-equipe="3">0</span></td>
+            <td><span class="score-cell" data-jeu="among-us" data-equipe="4">0</span></td>
+            <td class="max-pts">32</td>
+          </tr>
+          <tr>
+            <td>🗡️ Nidhogg</td>
+            <td><span class="score-cell" data-jeu="nidhogg" data-equipe="1">0</span></td>
+            <td><span class="score-cell" data-jeu="nidhogg" data-equipe="2">0</span></td>
+            <td><span class="score-cell" data-jeu="nidhogg" data-equipe="3">0</span></td>
+            <td><span class="score-cell" data-jeu="nidhogg" data-equipe="4">0</span></td>
+            <td class="max-pts">26</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="ligne-total">
+            <td>TOTAL</td>
+            <td id="total-1">0</td>
+            <td id="total-2">0</td>
+            <td id="total-3">0</td>
+            <td id="total-4">0</td>
+            <td class="max-pts">163</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>
+
+</main>
+
+    <footer>
+      <p>LAN 2026</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,881 @@
+/* ===========================
+   STYLE GÉNÉRAL
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+/* ===========================
+   HEADER & NAVIGATION
+=========================== */
+
+header {
+  background-color: #16213e;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid #e94560;
+}
+
+header h1 {
+  color: #e94560;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #e0e0e0;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: #0f3460;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: #e94560;
+}
+
+/* ===========================
+   CONTENU PRINCIPAL
+=========================== */
+
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+main h2 {
+  color: #e94560;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #16213e;
+  color: #888;
+  margin-top: 60px;
+  border-top: 3px solid #e94560;
+}
+
+/* ===========================
+   PAGE ACCUEIL
+=========================== */
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #16213e;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  color: #e94560;
+  margin-bottom: 5px;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #888;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.hero-description {
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.cartes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.carte {
+  background-color: #16213e;
+  border-radius: 10px;
+  padding: 25px;
+  width: 280px;
+  text-align: center;
+  border-bottom: 3px solid #e94560;
+  transition: transform 0.3s;
+}
+
+.carte:hover {
+  transform: translateY(-5px);
+}
+
+.carte-icone {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.carte h3 {
+  color: #e94560;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.carte p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.carte-detail {
+  color: #888;
+  font-size: 0.85rem !important;
+  margin-top: 5px;
+}
+
+/* ===========================
+   PAGE JEUX
+=========================== */
+
+.sous-titre {
+  color: #888;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.jeux-grille {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.jeu-carte {
+  background-color: #16213e;
+  border-radius: 10px;
+  width: 320px;
+  overflow: hidden;
+  border-bottom: 3px solid #e94560;
+  transition: transform 0.3s;
+}
+
+.jeu-carte:hover {
+  transform: translateY(-5px);
+}
+
+.jeu-header {
+  background-color: #0f3460;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.jeu-numero {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e94560;
+}
+
+.jeu-header h3 {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+}
+
+.jeu-body {
+  padding: 20px;
+}
+
+.jeu-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #bbb;
+}
+
+.jeu-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.jeu-tag {
+  background-color: #0f3460;
+  color: #e0e0e0;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.jeu-scoring {
+  background-color: #1a1a2e;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.jeu-scoring h4 {
+  color: #e94560;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.jeu-scoring p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.jeu-lien {
+  display: inline-block;
+  color: #e94560;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.jeu-lien:hover {
+  color: #fff;
+}
+
+.jeu-note {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* ===========================
+   PAGE ÉQUIPES
+=========================== */
+
+.equipes-grille {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.equipe-carte {
+  background-color: #16213e;
+  border-radius: 10px;
+  width: 240px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.equipe-carte:hover {
+  transform: translateY(-5px);
+}
+
+.equipe-header {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.equipe-icone {
+  font-size: 2.5rem;
+}
+
+.equipe-header h3 {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+}
+
+.equipe-badge {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background-color: #1a1a2e;
+  color: #888;
+}
+
+.equipe-joueurs {
+  list-style: none;
+  padding: 15px 20px;
+  background-color: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.equipe-joueurs li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.joueur-icone {
+  font-size: 1rem;
+}
+
+/* Couleurs distinctives par équipe */
+.equipe-1 { border-bottom: 4px solid #e94560; }
+.equipe-2 { border-bottom: 4px solid #4a9eff; }
+.equipe-3 { border-bottom: 4px solid #4caf50; }
+.equipe-4 { border-bottom: 4px solid #ffd700; }
+
+.equipe-1 .equipe-header { background-color: rgba(233, 69, 96, 0.15); }
+.equipe-2 .equipe-header { background-color: rgba(74, 158, 255, 0.15); }
+.equipe-3 .equipe-header { background-color: rgba(76, 175, 80, 0.15); }
+.equipe-4 .equipe-header { background-color: rgba(255, 215, 0, 0.15); }
+
+/* ===========================
+   PAGE JOUEURS
+=========================== */
+
+.joueurs-grille {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.joueur-carte-equipe-1 {
+  background-color: #16213e;
+  border-radius: 10px;
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.joueur-carte-equipe-2 {
+  background-color: #16213e;
+  border-radius: 10px;
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.joueur-carte-equipe-3 {
+  background-color: #16213e;
+  border-radius: 10px;
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.joueur-carte-equipe-4 {
+  background-color: #16213e;
+  border-radius: 10px;
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.joueur-carte:hover {
+  transform: translateY(-5px);
+}
+
+.joueur-header-equipe-1 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: #e94560;
+}
+
+.joueur-header-equipe-2 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: #4a9eff;
+}
+
+.joueur-header-equipe-3 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: #4caf50;
+}
+
+.joueur-header-equipe-4 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: #ffd700;
+}
+
+.joueur-avatar {
+  font-size: 2rem;
+}
+
+.joueur-pseudo {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+
+.joueur-equipe {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.joueur-notes {
+  padding: 15px;
+}
+
+.joueur-notes h4 {
+  color: #e94560;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.note-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+
+.note-ligne label {
+  color: #bbb;
+  flex: 1;
+}
+
+.note-ligne input {
+  width: 60px;
+  padding: 4px 8px;
+  background-color: #1a1a2e;
+  border: 1px solid #0f3460;
+  border-radius: 5px;
+  color: #e0e0e0;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.note-ligne input:focus {
+  outline: none;
+  border-color: #e94560;
+}
+
+.btn-sauvegarder {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  background-color: #e94560;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.btn-sauvegarder:hover {
+  background-color: #c73652;
+}
+
+.save-confirmation {
+  text-align: center;
+  color: #4caf50;
+  font-size: 0.8rem;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+/* ===========================
+   PAGE CLASSEMENT
+=========================== */
+
+/* Podium */
+.podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 15px;
+  margin: 40px 0;
+  height: 220px;
+}
+
+.podium-place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.podium-nom {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+.podium-pts {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.podium-bloc {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px 8px 0 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 0;
+  color: #1a1a2e;
+}
+
+.podium-or     { background-color: #ffd700; height: 130px; }
+.podium-argent { background-color: #c0c0c0; height: 100px; }
+.podium-bronze { background-color: #cd7f32; height: 80px;  }
+.podium-quatrieme { background-color: #555; height: 60px; color: #e0e0e0; font-size: 1rem; }
+
+/* Couleurs colonnes équipes */
+.equipe-1-color { color: #e94560; }
+.equipe-2-color { color: #4a9eff; }
+.equipe-3-color { color: #4caf50; }
+.equipe-4-color { color: #ffd700; }
+
+/* Tableau des scores */
+.scores-section {
+  margin-top: 40px;
+}
+
+.scores-section h3 {
+  color: #e94560;
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+
+.tableau-wrapper {
+  overflow-x: auto;
+}
+
+.tableau-scores {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.tableau-scores th,
+.tableau-scores td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #0f3460;
+}
+
+.tableau-scores th {
+  background-color: #0f3460;
+  font-size: 0.9rem;
+}
+
+.tableau-scores td:first-child {
+  text-align: left;
+  color: #bbb;
+}
+
+.tableau-scores tbody tr:hover {
+  background-color: #16213e;
+}
+
+.max-pts {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.ligne-total td {
+  font-weight: bold;
+  color: #e94560;
+  background-color: #16213e;
+  font-size: 1rem;
+}
+
+/* Cellules de score cliquables */
+.score-cell {
+  display: inline-block;
+  min-width: 40px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.score-cell:hover {
+  background-color: #0f3460;
+}
+
+.score-input {
+  width: 50px;
+  padding: 4px;
+  background-color: #1a1a2e;
+  border: 1px solid #e94560;
+  border-radius: 5px;
+  color: #e0e0e0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   PAGE PLANNING
+=========================== */
+
+/* Légende */
+.planning-legende {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.legende-item {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.legende-compet   { background-color: rgba(233, 69, 96, 0.2);  border: 1px solid #e94560; }
+.legende-pause    { background-color: rgba(255, 165, 0, 0.2);   border: 1px solid orange; }
+.legende-libre    { background-color: rgba(74, 158, 255, 0.2);  border: 1px solid #4a9eff; }
+.legende-special  { background-color: rgba(255, 215, 0, 0.2);   border: 1px solid #ffd700; }
+
+/* Jours */
+.jour-section {
+  margin-bottom: 50px;
+}
+
+.jour-titre {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.jour-titre h3 {
+  font-size: 1.5rem;
+  color: #e94560;
+  border-bottom: 2px solid #e94560;
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+/* Créneaux */
+.creneaux {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.creneau {
+  display: flex;
+  align-items: stretch;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.creneau:hover {
+  transform: translateX(5px);
+}
+
+.creneau-heure {
+  min-width: 150px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: #0f3460;
+}
+
+.creneau-contenu {
+  flex: 1;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.creneau-jeu {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+.creneau-detail {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.creneau-duree {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+.creneau-badge {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Couleurs par type */
+.creneau-compet {
+  background-color: rgba(233, 69, 96, 0.08);
+  border-left: 4px solid #e94560;
+}
+
+.creneau-compet .creneau-badge {
+  color: #e94560;
+}
+
+.creneau-pause {
+  background-color: rgba(255, 165, 0, 0.08);
+  border-left: 4px solid orange;
+}
+
+.creneau-pause .creneau-badge {
+  color: orange;
+}
+
+.creneau-libre {
+  background-color: rgba(74, 158, 255, 0.08);
+  border-left: 4px solid #4a9eff;
+}
+
+.creneau-libre .creneau-badge {
+  color: #4a9eff;
+}
+
+.creneau-special {
+  background-color: rgba(255, 215, 0, 0.08);
+  border-left: 4px solid #ffd700;
+}
+
+.creneau-special .creneau-badge {
+  color: #ffd700;
+}
+
+/* ===========================
+   MENU ACTIF
+=========================== */
+
+nav a.actif {
+  background-color: #e94560;
+  color: white;
+  font-weight: bold;
+}
+
+/* ===========================
+   ANIMATION DE CHARGEMENT
+=========================== */
+
+main {
+  animation: apparition 0.4s ease-in-out;
+}
+
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   RESPONSIVE — MOBILE
+=========================== */
+
+@media (max-width: 768px) {
+
+  /* Header */
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  nav {
+    gap: 8px;
+  }
+
+  nav a {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  /* Grilles */
+  .jeux-grille,
+  .equipes-grille,
+  .joueurs-grille {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .jeu-carte,
+  .equipe-carte,
+  .joueur-carte {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* Podium */
+  .podium {
+    height: auto;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .podium-bloc {
+    height: 70px !important;
+  }
+
+  /* Planning */
+  .creneau {
+    flex-direction: column;
+  }
+
+  .creneau-heure {
+    min-width: unset;
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Tableau classement */
+  .tableau-scores th,
+  .tableau-scores td {
+    padding: 8px 6px;
+    font-size: 0.8rem;
+  }
+}
