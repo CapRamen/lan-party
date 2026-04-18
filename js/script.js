@@ -98,11 +98,13 @@ function afficherScores() {
 
 // Met à jour le podium selon les totaux
 function mettreAJourPodium(totaux) {
+  const nomsData = localStorage.getItem('noms-lan');
+  const nomsStockes = nomsData ? JSON.parse(nomsData) : null;
   const noms = {
-    1: 'Équipe 1',
-    2: 'Équipe 2',
-    3: 'Équipe 3',
-    4: 'Équipe 4'
+    1: nomsStockes ? nomsStockes.equipes[1] : 'Équipe 1',
+    2: nomsStockes ? nomsStockes.equipes[2] : 'Équipe 2',
+    3: nomsStockes ? nomsStockes.equipes[3] : 'Équipe 3',
+    4: nomsStockes ? nomsStockes.equipes[4] : 'Équipe 4'
   };
 
   // Créer un tableau trié par points décroissants
@@ -205,3 +207,68 @@ function marquerPageActive() {
 }
 
 marquerPageActive();
+
+// ================================
+// APPLICATION DES NOMS PARTOUT
+// ================================
+
+function appliquerNoms() {
+  const data = localStorage.getItem('noms-lan');
+  if (!data) return;
+  const noms = JSON.parse(data);
+
+  // Mettre à jour les noms d'équipes partout
+  for (let e = 1; e <= 4; e++) {
+    // Dans la page équipes (les h3 des cartes)
+    document.querySelectorAll('.equipe-' + e + ' h3').forEach(function(el) {
+      el.textContent = noms.equipes[e];
+    });
+
+    // Dans le tableau classement
+    const th = document.querySelector('.col-equipe.equipe-' + e + '-color');
+    if (th) th.textContent = noms.equipes[e];
+
+    // Dans le podium
+    const podiumNom = document.querySelector('#podium-1 .podium-nom, #podium-2 .podium-nom, #podium-3 .podium-nom, #podium-4 .podium-nom');
+  }
+
+  // Mettre à jour les noms de joueurs sur la page joueurs
+  for (let j = 1; j <= 12; j++) {
+    const pseudo = document.querySelector(
+      '.joueur-carte:nth-child(' + j + ') .joueur-pseudo'
+    );
+    if (pseudo) pseudo.textContent = noms.joueurs[j];
+
+    const equipeSpan = document.querySelector(
+      '.joueur-carte:nth-child(' + j + ') .joueur-equipe'
+    );
+    // Trouver l'équipe du joueur
+    const equipeId = j <= 3 ? 1 : j <= 6 ? 2 : j <= 9 ? 3 : 4;
+    if (equipeSpan) equipeSpan.textContent = noms.equipes[equipeId];
+  }
+
+  // Appliquer les infos de la page d'accueil
+  const infosData = localStorage.getItem('infos-accueil');
+  if (infosData) {
+    const infos = JSON.parse(infosData);
+
+    const correspondances = [
+      { id: 'accueil-dates',          cle: 'dates'          },
+      { id: 'accueil-horaires',       cle: 'horaires'       },
+      { id: 'accueil-horaires-compet',cle: 'horairesCompet' },
+      { id: 'accueil-lieu',           cle: 'lieu'           },
+      { id: 'accueil-joueurs',        cle: 'joueurs'        },
+      { id: 'accueil-equipes',        cle: 'equipes'        },
+      { id: 'accueil-jeux',           cle: 'jeux'           },
+      { id: 'accueil-format',         cle: 'format'         },
+    ];
+
+    correspondances.forEach(function(item) {
+      const el = document.getElementById(item.id);
+      if (el) el.textContent = infos[item.cle];
+    });
+  }
+  
+}
+
+document.addEventListener('DOMContentLoaded', appliquerNoms);

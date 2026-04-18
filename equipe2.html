@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>LAN : Legacy - Équipe 2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+
+    <header>
+      <h1>🎮 LAN : Legacy</h1>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="jeux.html">Jeux</a>
+        <a href="equipes.html">Équipes</a>
+        <a href="joueurs.html">Joueurs</a>
+        <a href="classement.html">Classement</a>
+        <a href="planning.html">Planning</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <a href="equipes.html" class="btn-retour">← Retour aux équipes</a>
+
+      <!-- EN-TÊTE ÉQUIPE -->
+      <div class="equipe-page-header equipe-2-bg">
+        <div class="equipe-page-titre">
+          <span class="equipe-page-icone">🔵</span>
+          <div>
+            <h2 id="nom-equipe">Équipe 2</h2>
+            <p class="equipe-page-sous-titre">LAN : Legacy</p>
+          </div>
+        </div>
+        <div class="equipe-page-stats">
+          <div class="stat-bloc">
+            <span class="stat-valeur" id="classement-actuel">—</span>
+            <span class="stat-label">Classement</span>
+          </div>
+          <div class="stat-bloc">
+            <span class="stat-valeur" id="points-totaux">0</span>
+            <span class="stat-label">Points</span>
+          </div>
+          <div class="stat-bloc">
+            <span class="stat-valeur">3</span>
+            <span class="stat-label">Joueurs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="equipe-page-contenu">
+
+        <!-- COLONNE GAUCHE -->
+        <div class="equipe-col-gauche">
+
+          <!-- SCORES PAR JEU -->
+          <div class="equipe-section">
+            <h3>📊 Points par jeu</h3>
+            <div class="jeux-scores" id="jeux-scores"></div>
+          </div>
+
+          <!-- JOUEURS -->
+<div class="equipe-section">
+  <h3>👥 Joueurs</h3>
+  <div class="joueurs-fiches" id="joueurs-fiches"></div>
+</div>
+
+<!-- RADARS INDIVIDUELS -->
+<div class="equipe-section">
+  <h3>🕸️ Profils individuels</h3>
+  <p class="sous-titre">Notes personnelles par jeu</p>
+  <div class="radars-individuels" id="radars-individuels"></div>
+</div>
+
+        </div>
+
+        <!-- COLONNE DROITE -->
+        <div class="equipe-col-droite">
+
+          <!-- GRAPHIQUE RADAR -->
+          <div class="equipe-section">
+            <h3>🕸️ Profil de l'équipe</h3>
+            <p class="sous-titre">Basé sur les notes des joueurs</p>
+            <div class="radar-container">
+              <canvas id="radarChart"></canvas>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer>
+      <p>LAN Party 2025</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/equipe.js"></script>
+    <script>
+      // Initialise la page pour l'équipe 2
+      initialiserPageEquipe(2, [4, 5, 6]);
+    </script>
+
+  </body>
+</html>

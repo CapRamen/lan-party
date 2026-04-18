@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>LAN Party - Administration</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+    const MOT_DE_PASSE = 'Worth-it?';
+    const DUREE_SESSION = 4 * 60 * 60 * 1000;
+
+    function verifierMotDePasse() {
+      const input = document.getElementById('login-input');
+      const erreur = document.getElementById('login-erreur');
+
+      if (input.value === MOT_DE_PASSE) {
+        localStorage.setItem('admin-session', Date.now().toString());
+        afficherAdmin();
+      } else {
+        erreur.textContent = '❌ Mot de passe incorrect';
+        input.value = '';
+        input.focus();
+        const carte = document.querySelector('.login-carte');
+        carte.classList.add('login-shake');
+        setTimeout(function() {
+          carte.classList.remove('login-shake');
+        }, 500);
+      }
+    }
+
+    function afficherAdmin() {
+      document.getElementById('login-overlay').style.display = 'none';
+      document.getElementById('admin-contenu').style.display = 'block';
+    }
+
+    function verifierSession() {
+      const session = localStorage.getItem('admin-session');
+      if (!session) return;
+      const tempsEcoule = Date.now() - parseInt(session);
+      if (tempsEcoule < DUREE_SESSION) {
+        // On attend que le DOM soit prêt avant d'afficher
+        document.addEventListener('DOMContentLoaded', afficherAdmin);
+      } else {
+        localStorage.removeItem('admin-session');
+      }
+    }
+
+    verifierSession();
+  </script>
+
+</head>
+  </head>
+  <body>
+
+     <!-- ÉCRAN DE CONNEXION -->
+  <div class="login-overlay" id="login-overlay">
+    <div class="login-carte">
+      <div class="login-icone">🔐</div>
+      <h2 class="login-titre">Page Administration</h2>
+      <p class="login-sous-titre">Entrez le mot de passe pour continuer</p>
+      <input
+        type="password"
+        id="login-input"
+        class="login-input"
+        placeholder="Mot de passe..."
+        onkeydown="if(event.key==='Enter') verifierMotDePasse()"
+      >
+      <button class="login-btn" onclick="verifierMotDePasse()">
+        🔓 Accéder
+      </button>
+      <p class="login-erreur" id="login-erreur"></p>
+    </div>
+  </div>
+
+  <!-- CONTENU ADMIN (caché par défaut) -->
+  <div id="admin-contenu" style="display:none">
+
+    <header>
+      <h1>🎮 LAN Party</h1>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="jeux.html">Jeux</a>
+        <a href="equipes.html">Équipes</a>
+        <a href="joueurs.html">Joueurs</a>
+        <a href="classement.html">Classement</a>
+        <a href="planning.html">Planning</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <h2>⚙️ Administration</h2>
+      <p class="sous-titre">Modifie les noms des équipes et des joueurs ici.</p>
+
+      <!-- MESSAGE DE CONFIRMATION -->
+      <div class="admin-confirmation" id="admin-confirmation"></div>
+
+      <!-- ÉQUIPES -->
+      <div class="admin-section">
+        <h3>🏆 Noms des équipes</h3>
+        <div class="admin-grille">
+
+          <div class="admin-carte equipe-1">
+            <label class="admin-label">🔴 Équipe 1</label>
+            <input type="text" id="nom-equipe-1" class="admin-input" placeholder="Nom de l'équipe 1">
+          </div>
+
+          <div class="admin-carte equipe-2">
+            <label class="admin-label">🔵 Équipe 2</label>
+            <input type="text" id="nom-equipe-2" class="admin-input" placeholder="Nom de l'équipe 2">
+          </div>
+
+          <div class="admin-carte equipe-3">
+            <label class="admin-label">🟢 Équipe 3</label>
+            <input type="text" id="nom-equipe-3" class="admin-input" placeholder="Nom de l'équipe 3">
+          </div>
+
+          <div class="admin-carte equipe-4">
+            <label class="admin-label">🟡 Équipe 4</label>
+            <input type="text" id="nom-equipe-4" class="admin-input" placeholder="Nom de l'équipe 4">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- JOUEURS -->
+      <div class="admin-section">
+        <h3>👥 Pseudos des joueurs</h3>
+
+        <div class="admin-equipe-bloc equipe-1-border">
+          <h4>🔴 Équipe 1</h4>
+          <div class="admin-joueurs-grille">
+            <div class="admin-joueur">
+              <label>Joueur 1</label>
+              <input type="text" id="nom-joueur-1" class="admin-input" placeholder="Pseudo joueur 1">
+            </div>
+            <div class="admin-joueur">
+              <label>Joueur 2</label>
+              <input type="text" id="nom-joueur-2" class="admin-input" placeholder="Pseudo joueur 2">
+            </div>
+            <div class="admin-joueur">
+              <label>Joueur 3</label>
+              <input type="text" id="nom-joueur-3" class="admin-input" placeholder="Pseudo joueur 3">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-equipe-bloc equipe-2-border">
+          <h4>🔵 Équipe 2</h4>
+          <div class="admin-joueurs-grille">
+            <div class="admin-joueur">
+              <label>Joueur 4</label>
+              <input type="text" id="nom-joueur-4" class="admin-input" placeholder="Pseudo joueur 4">
+            </div>
+            <div class="admin-joueur">
+              <label>Joueur 5</label>
+              <input type="text" id="nom-joueur-5" class="admin-input" placeholder="Pseudo joueur 5">
+            </div>
+            <div class="admin-joueur">
+              <label>Joueur 6</label>
+              <input type="text" id="nom-joueur-6" class="admin-input" placeholder="Pseudo joueur 6">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-equipe-bloc equipe-3-border">
+          <h4>🟢 Équipe 3</h4>
+          <div class="admin-joueurs-grille">
+            <div class="admin-joueur">
+              <label>Joueur 7</label>
+              <input type="text" id="nom-joueur-7" class="admin-input" placeholder="Pseudo joueur 7">
+            </div>
+            <div class="admin-joueur">
+              <label>Joueur 8</label>
+              <input type="text" id="nom-joueur-8" class="admin-input" placeholder="Pseudo joueur 8">
+            </div>
+            <div class="admin-joueur">
+              <label>Joueur 9</label>
+              <input type="text" id="nom-joueur-9" class="admin-input" placeholder="Pseudo joueur 9">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-equipe-bloc equipe-4-border">
+          <h4>🟡 Équipe 4</h4>
+          <div class="admin-joueurs-grille">
+            <div class="admin-joueur">
+              <label>Joueur 10</label>
+              <input type="text" id="nom-joueur-10" class="admin-input" placeholder="Pseudo joueur 10">
+            </div>
+            <div class="admin-joueur">
+              <label>Joueur 11</label>
+              <input type="text" id="nom-joueur-11" class="admin-input" placeholder="Pseudo joueur 11">
+            </div>
+            <div class="admin-joueur">
+              <label>Joueur 12</label>
+              <input type="text" id="nom-joueur-12" class="admin-input" placeholder="Pseudo joueur 12">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- INFOS ACCUEIL -->
+<div class="admin-section">
+  <h3>🏠 Informations de la page d'accueil</h3>
+
+  <div class="admin-infos-grille">
+
+    <div class="admin-info-bloc">
+      <label class="admin-label">📅 Dates</label>
+      <input type="text" id="info-dates" class="admin-input" placeholder="Ex: 14 et 15 juin 2025">
+    </div>
+
+    <div class="admin-info-bloc">
+      <label class="admin-label">⏰ Horaires</label>
+      <input type="text" id="info-horaires" class="admin-input" placeholder="Ex: De 18h le vendredi à 12h le dimanche">
+    </div>
+
+    <div class="admin-info-bloc">
+      <label class="admin-label">⏰ Horaires compétition</label>
+      <input type="text" id="info-horaires-compet" class="admin-input" placeholder="Ex: Vendredi 20h → Dimanche 2h">
+    </div>
+
+    <div class="admin-info-bloc">
+      <label class="admin-label">📍 Lieu</label>
+      <input type="text" id="info-lieu" class="admin-input" placeholder="Ex: Chez Quentin">
+    </div>
+
+    <div class="admin-info-bloc">
+      <label class="admin-label">👥 Nombre de joueurs</label>
+      <input type="text" id="info-joueurs" class="admin-input" placeholder="Ex: 12 joueurs">
+    </div>
+
+    <div class="admin-info-bloc">
+      <label class="admin-label">👥 Équipes</label>
+      <input type="text" id="info-equipes" class="admin-input" placeholder="Ex: 4 équipes de 3">
+    </div>
+
+    <div class="admin-info-bloc">
+      <label class="admin-label">🎮 Jeux</label>
+      <input type="text" id="info-jeux" class="admin-input" placeholder="Ex: 9 jeux au programme">
+    </div>
+
+    <div class="admin-info-bloc admin-info-large">
+      <label class="admin-label">🏆 Format</label>
+      <textarea id="info-format" class="admin-input admin-textarea" placeholder="Ex: Compétition par équipes..."></textarea>
+    </div>
+
+  </div>
+</div>
+
+      <!-- BOUTONS -->
+      <div class="admin-boutons">
+        <button class="btn-sauvegarder-admin" onclick="sauvegarderNoms()">
+          💾 Sauvegarder tous les noms
+        </button>
+        <button class="btn-reset-admin" onclick="reinitialiserNoms()">
+          🔄 Réinitialiser
+        </button>
+      </div>
+
+    </main>
+
+    <footer>
+      <p>LAN 2026</p>
+    </footer>
+</div> <!-- fin admin-contenu -->
+
+    <script src="js/script.js"></script>
+    <script src="js/admin.js"></script>
+
+</div>
+
+  </body>
+</html>
