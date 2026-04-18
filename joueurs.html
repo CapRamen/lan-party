@@ -29,7 +29,19 @@
     <!-- JOUEUR 1 -->
     <div class="joueur-carte equipe-1">
       <div class="joueur-header-equipe-1">
-        <span class="joueur-avatar">🎮</span>
+        <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur1"
+    onclick="ouvrirSelecteurImage('joueur1')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur1')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 1</h3>
           <span class="joueur-equipe">Équipe 1</span>
@@ -37,6 +49,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur1">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur1"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur1"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur1"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur1"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne">
           <label>Rocket League</label>
           <input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur1" data-jeu="rocket-league">
@@ -81,7 +126,19 @@
     <!-- JOUEUR 2 -->
     <div class="joueur-carte equipe-1">
       <div class="joueur-header-equipe-1">
-        <span class="joueur-avatar">🎮</span>
+        <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur2"
+    onclick="ouvrirSelecteurImage('joueur2')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur2')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 2</h3>
           <span class="joueur-equipe">Équipe 1</span>
@@ -89,6 +146,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur2">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur2"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur2"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur2"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur2"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur2" data-jeu="wntgd"></div>
@@ -106,7 +196,19 @@
     <!-- JOUEUR 3 -->
     <div class="joueur-carte equipe-1">
       <div class="joueur-header-equipe-1">
-        <span class="joueur-avatar">🎮</span>
+        <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur3"
+    onclick="ouvrirSelecteurImage('joueur3')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur3')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 3</h3>
           <span class="joueur-equipe">Équipe 1</span>
@@ -114,6 +216,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur3">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS  -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur3"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur3"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur3"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur3"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur3" data-jeu="wntgd"></div>
@@ -131,7 +266,19 @@
     <!-- JOUEUR 4 -->
     <div class="joueur-carte equipe-2">
       <div class="joueur-header-equipe-2">
-        <span class="joueur-avatar">🎮</span>
+        <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur4"
+    onclick="ouvrirSelecteurImage('joueur4')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur4')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 4</h3>
           <span class="joueur-equipe">Équipe 2</span>
@@ -139,6 +286,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur4">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur4"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur4"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur4"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur4"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur4" data-jeu="wntgd"></div>
@@ -156,7 +336,19 @@
     <!-- JOUEUR 5 -->
     <div class="joueur-carte equipe-2">
       <div class="joueur-header-equipe-2">
-        <span class="joueur-avatar">🎮</span>
+        <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur5"
+    onclick="ouvrirSelecteurImage('joueur5')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur5')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 5</h3>
           <span class="joueur-equipe">Équipe 2</span>
@@ -164,6 +356,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur5">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur5"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur5"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur5"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur5"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur5" data-jeu="wntgd"></div>
@@ -181,7 +406,19 @@
     <!-- JOUEUR 6 -->
     <div class="joueur-carte equipe-2">
       <div class="joueur-header-equipe-2">
-        <span class="joueur-avatar">🎮</span>
+        <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur6"
+    onclick="ouvrirSelecteurImage('joueur6')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur6')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 6</h3>
           <span class="joueur-equipe">Équipe 2</span>
@@ -189,6 +426,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur6">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur6"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur6"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur6"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur6"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur6" data-jeu="wntgd"></div>
@@ -206,7 +476,19 @@
     <!-- JOUEUR 7 -->
     <div class="joueur-carte equipe-3">
       <div class="joueur-header-equipe-3">
-        <span class="joueur-avatar">🎮</span>
+        <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur7"
+    onclick="ouvrirSelecteurImage('joueur7')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur7')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 7</h3>
           <span class="joueur-equipe">Équipe 3</span>
@@ -214,6 +496,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur7">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur7"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur7"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur7"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur7"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur7" data-jeu="wntgd"></div>
@@ -231,7 +546,19 @@
     <!-- JOUEUR 8 -->
     <div class="joueur-carte equipe-3">
       <div class="joueur-header-equipe-3">
-        <span class="joueur-avatar">🎮</span>
+       <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur8"
+    onclick="ouvrirSelecteurImage('joueur8')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur8')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 8</h3>
           <span class="joueur-equipe">Équipe 3</span>
@@ -239,6 +566,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur8">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur8"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur8"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur8"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur8"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur8" data-jeu="wntgd"></div>
@@ -256,7 +616,19 @@
     <!-- JOUEUR 9 -->
     <div class="joueur-carte equipe-3">
       <div class="joueur-header-equipe-3">
-        <span class="joueur-avatar">🎮</span>
+        <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur9"
+    onclick="ouvrirSelecteurImage('joueur9')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur9')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 9</h3>
           <span class="joueur-equipe">Équipe 3</span>
@@ -264,6 +636,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur9">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur9"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur9"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur9"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur9"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur9" data-jeu="wntgd"></div>
@@ -281,7 +686,19 @@
     <!-- JOUEUR 10 -->
     <div class="joueur-carte equipe-4">
       <div class="joueur-header-equipe-4">
-        <span class="joueur-avatar">🎮</span>
+        <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur10"
+    onclick="ouvrirSelecteurImage('joueur10')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur10')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 10</h3>
           <span class="joueur-equipe">Équipe 4</span>
@@ -289,6 +706,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur10">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur10"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur10"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur10"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur10"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur10" data-jeu="wntgd"></div>
@@ -306,7 +756,19 @@
     <!-- JOUEUR 11 -->
     <div class="joueur-carte equipe-4">
       <div class="joueur-header-equipe-4">
-        <span class="joueur-avatar">🎮</span>
+       <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur11"
+    onclick="ouvrirSelecteurImage('joueur11')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur11')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 11</h3>
           <span class="joueur-equipe">Équipe 4</span>
@@ -314,6 +776,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur11">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur11"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur11"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur11"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur11"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur11" data-jeu="wntgd"></div>
@@ -331,7 +826,19 @@
     <!-- JOUEUR 12 -->
     <div class="joueur-carte equipe-4">
       <div class="joueur-header-equipe-4">
-        <span class="joueur-avatar">🎮</span>
+       <div class="avatar-conteneur">
+  <div
+    class="joueur-avatar-photo"
+    id="avatar-joueur12"
+    onclick="ouvrirSelecteurImage('joueur12')"
+    title="Clique pour changer ta photo"
+  >🎮</div>
+  <button
+    class="avatar-supprimer"
+    onclick="supprimerAvatar('joueur12')"
+    title="Supprimer la photo"
+  >✕</button>
+</div>
         <div>
           <h3 class="joueur-pseudo">Joueur 12</h3>
           <span class="joueur-equipe">Équipe 4</span>
@@ -339,6 +846,39 @@
       </div>
       <div class="joueur-notes" id="notes-joueur12">
         <h4>PGM ou un noob</h4>
+
+<!-- PSEUDOS -->
+  <div class="joueur-pseudos">
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone steam-icone">
+        <img src="https://store.steampowered.com/favicon.ico" alt="Steam">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="steam-joueur12"
+        placeholder="Pseudo Steam..."
+        data-joueur="joueur12"
+        data-type="steam"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+    <div class="pseudo-ligne">
+      <span class="pseudo-icone discord-icone">
+        <img src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+      </span>
+      <input
+        type="text"
+        class="pseudo-input"
+        id="discord-joueur12"
+        placeholder="Pseudo Discord..."
+        data-joueur="joueur12"
+        data-type="discord"
+        onblur="sauvegarderPseudo(this)"
+      >
+    </div>
+  </div>
+
         <div class="note-ligne"><label>Rocket League</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="rocket-league"></div>
         <div class="note-ligne"><label>The Finals</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="the-finals"></div>
         <div class="note-ligne"><label>We Need to Go Deeper</label><input type="number" min="0" max="10" placeholder="0-10" data-joueur="joueur12" data-jeu="wntgd"></div>
@@ -356,10 +896,230 @@
   </div>
 </main>
 
-    <footer>
+    <!-- MODAL DE RECADRAGE -->
+  <div class="crop-overlay" id="crop-overlay">
+    <div class="crop-carte">
+      <h3 class="crop-titre">📸 Ajuster ta photo</h3>
+      <p class="crop-sous-titre">Clique et glisse pour centrer ton image</p>
+
+      <div class="crop-zone" id="crop-zone">
+        <canvas id="crop-canvas"></canvas>
+        <div class="crop-cercle-guide"></div>
+      </div>
+
+      <div class="crop-boutons">
+        <button class="crop-btn-valider" onclick="validerCrop()">✅ Valider</button>
+        <button class="crop-btn-annuler" onclick="fermerCrop()">❌ Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
       <p>LAN 2026</p>
     </footer>
 
-    <script src="js/script.js"></script>
-  </body>
+<script src="js/script.js"></script>
+
+<script>
+  // Variables globales pour le recadrage
+  let cropJoueurId = null;
+  let cropImage = new Image();
+  let cropOffsetX = 0;
+  let cropOffsetY = 0;
+  let cropDragging = false;
+  let cropStartX = 0;
+  let cropStartY = 0;
+  let cropScale = 1;
+  const CROP_SIZE = 200;
+
+  function ouvrirSelecteurImage(joueurId) {
+    console.log('Clic avatar joueur', joueurId);
+    cropJoueurId = joueurId;
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = function(e) {
+      console.log('Fichier sélectionné');
+      const fichier = e.target.files[0];
+      if (!fichier) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        console.log('Image lue en base64');
+        cropImage = new Image();
+        cropImage.onload = function() {
+          console.log('Image chargée, ouverture crop');
+          ouvrirCrop();
+        };
+        cropImage.src = evt.target.result;
+      };
+      reader.readAsDataURL(fichier);
+    };
+    input.click();
+  }
+
+ function ouvrirCrop() {
+  const overlay = document.getElementById('crop-overlay');
+  console.log('Overlay trouvé :', overlay);
+  if (!overlay) {
+    console.log('Overlay introuvable !');
+    return;
+  }
+    cropScale = Math.max(
+      CROP_SIZE / cropImage.width,
+      CROP_SIZE / cropImage.height
+    );
+    cropOffsetX = (CROP_SIZE - cropImage.width  * cropScale) / 2;
+    cropOffsetY = (CROP_SIZE - cropImage.height * cropScale) / 2;
+    overlay.style.display = 'flex';
+    dessinerCrop();
+    activerDragCrop();
+  }
+
+  function dessinerCrop() {
+    const canvas = document.getElementById('crop-canvas');
+    if (!canvas) return;
+    canvas.width  = CROP_SIZE;
+    canvas.height = CROP_SIZE;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#1a1a2e';
+    ctx.fillRect(0, 0, CROP_SIZE, CROP_SIZE);
+    ctx.drawImage(
+      cropImage,
+      cropOffsetX, cropOffsetY,
+      cropImage.width  * cropScale,
+      cropImage.height * cropScale
+    );
+  }
+
+  function activerDragCrop() {
+    const canvas = document.getElementById('crop-canvas');
+    if (!canvas) return;
+    canvas.onmousedown = function(e) {
+      cropDragging = true;
+      cropStartX = e.clientX - cropOffsetX;
+      cropStartY = e.clientY - cropOffsetY;
+    };
+    canvas.onmousemove = function(e) {
+      if (!cropDragging) return;
+      cropOffsetX = e.clientX - cropStartX;
+      cropOffsetY = e.clientY - cropStartY;
+      dessinerCrop();
+    };
+    canvas.onmouseup    = function() { cropDragging = false; };
+    canvas.onmouseleave = function() { cropDragging = false; };
+    canvas.ontouchstart = function(e) {
+      e.preventDefault();
+      const touch = e.touches[0];
+      cropDragging = true;
+      cropStartX = touch.clientX - cropOffsetX;
+      cropStartY = touch.clientY - cropOffsetY;
+    };
+    canvas.ontouchmove = function(e) {
+      e.preventDefault();
+      if (!cropDragging) return;
+      const touch = e.touches[0];
+      cropOffsetX = touch.clientX - cropStartX;
+      cropOffsetY = touch.clientY - cropStartY;
+      dessinerCrop();
+    };
+    canvas.ontouchend = function() { cropDragging = false; };
+    canvas.onwheel = function(e) {
+      e.preventDefault();
+      const facteur = e.deltaY > 0 ? 0.9 : 1.1;
+      cropScale *= facteur;
+      dessinerCrop();
+    };
+  }
+
+  function validerCrop() {
+    const canvas = document.getElementById('crop-canvas');
+    if (!canvas || !cropJoueurId) return;
+    const final = document.createElement('canvas');
+    final.width  = CROP_SIZE;
+    final.height = CROP_SIZE;
+    const ctx = final.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(CROP_SIZE / 2, CROP_SIZE / 2, CROP_SIZE / 2, 0, Math.PI * 2);
+    ctx.clip();
+    ctx.drawImage(canvas, 0, 0);
+    const imageData = final.toDataURL('image/jpeg', 0.8);
+    localStorage.setItem('avatar-' + cropJoueurId, imageData);
+    const el = document.getElementById('avatar-' + cropJoueurId);
+    if (el) {
+      el.style.backgroundImage = 'url(' + imageData + ')';
+      el.textContent = '';
+    }
+    fermerCrop();
+  }
+
+  function fermerCrop() {
+    const overlay = document.getElementById('crop-overlay');
+    if (overlay) overlay.style.display = 'none';
+    cropJoueurId = null;
+  }
+
+  // Charger les avatars au démarrage
+  document.addEventListener('DOMContentLoaded', function() {
+  for (let j = 1; j <= 12; j++) {
+    const avatar = localStorage.getItem('avatar-joueur' + j);
+    const el = document.getElementById('avatar-joueur' + j);
+      if (avatar && el) {
+        el.style.backgroundImage = 'url(' + avatar + ')';
+        el.textContent = '';
+      }
+    }
+    chargerPseudos();
+  });
+
+  function supprimerAvatar(joueurId) {
+  localStorage.removeItem('avatar-' + joueurId);
+  const el = document.getElementById('avatar-' + joueurId);
+  if (el) {
+    el.style.backgroundImage = '';
+    el.textContent = '🎮';
+  }
+}
+
+// ================================
+// PSEUDOS STEAM ET DISCORD
+// ================================
+
+// Sauvegarde le pseudo quand on quitte le champ
+function sauvegarderPseudo(input) {
+  const joueurId = input.getAttribute('data-joueur');
+  const type = input.getAttribute('data-type');
+  const valeur = input.value.trim();
+
+  // Charger les pseudos existants
+  const data = localStorage.getItem('pseudos-' + joueurId);
+  const pseudos = data ? JSON.parse(data) : {};
+
+  // Mettre à jour ou supprimer
+  if (valeur !== '') {
+    pseudos[type] = valeur;
+  } else {
+    delete pseudos[type];
+  }
+
+  // Sauvegarder
+  localStorage.setItem('pseudos-' + joueurId, JSON.stringify(pseudos));
+}
+
+// Charge tous les pseudos au démarrage
+function chargerPseudos() {
+  for (let j = 1; j <= 12; j++) {
+    const data = localStorage.getItem('pseudos-joueur' + j);
+    if (!data) continue;
+    const pseudos = JSON.parse(data);
+
+    const steamInput = document.getElementById('steam-joueur' + j);
+    const discordInput = document.getElementById('discord-joueur' + j);
+
+    if (steamInput && pseudos.steam)     steamInput.value = pseudos.steam;
+    if (discordInput && pseudos.discord) discordInput.value = pseudos.discord;
+  }
+}
+</script>
+
+</body>
 </html>

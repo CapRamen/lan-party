@@ -114,12 +114,43 @@ function afficherFichesJoueurs(joueursIds, noms) {
   joueursIds.forEach(function(joueurId) {
     const nomJoueur = noms ? noms.joueurs[joueurId] : 'Joueur ' + joueurId;
 
+    // Charger les pseudos
+    const pseudoData = localStorage.getItem('pseudos-joueur' + joueurId);
+    const pseudos = pseudoData ? JSON.parse(pseudoData) : {};
+
+    // Charger l'avatar
+    const avatarData = localStorage.getItem('avatar-joueur' + joueurId);
+    const avatarStyle = avatarData
+      ? `background-image:url(${avatarData}); color: transparent;`
+      : '';
+
+    // Construire les pseudos HTML
+    const steamHTML = pseudos.steam ? `
+      <div class="fiche-pseudo-ligne">
+        <img class="fiche-pseudo-icone" src="https://store.steampowered.com/favicon.ico" alt="Steam">
+        <span class="fiche-pseudo-steam">${pseudos.steam}</span>
+      </div>` : '';
+
+    const discordHTML = pseudos.discord ? `
+      <div class="fiche-pseudo-ligne">
+        <img class="fiche-pseudo-icone" src="https://cdn.cdnlogo.com/logos/d/15/discord.svg" alt="Discord">
+        <span class="fiche-pseudo-discord">${pseudos.discord}</span>
+      </div>` : '';
+
     const fiche = document.createElement('div');
     fiche.className = 'joueur-fiche-simple';
     fiche.innerHTML = `
-      <span class="fiche-avatar">🎮</span>
-      <span class="fiche-nom">${nomJoueur}</span>
-    `;
+  <div class="fiche-avatar-photo" style="${avatarStyle}">
+    ${avatarData ? '' : '🎮'}
+  </div>
+  <div class="fiche-infos">
+    <span class="fiche-nom">${nomJoueur}</span>
+    <div class="fiche-pseudos-groupe">
+      ${steamHTML}
+      ${discordHTML}
+    </div>
+  </div>
+`;
     conteneur.appendChild(fiche);
   });
 }
@@ -193,7 +224,7 @@ function creerRadarsIndividuels(joueursIds, notesParJoueur, noms) {
     const bloc = document.createElement('div');
     bloc.className = 'radar-individuel-bloc';
     bloc.innerHTML = `
-      <h4 class="radar-individuel-titre">🎮 ${nomJoueur}</h4>
+      <h4 class="radar-individuel-titre"> ${nomJoueur}</h4>
       <canvas id="radar-joueur-${joueurId}"></canvas>
     `;
     conteneur.appendChild(bloc);

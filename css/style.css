@@ -1403,3 +1403,281 @@ main {
 .login-shake {
   animation: shake 0.5s ease-in-out;
 }
+
+/* ===========================
+   AVATARS JOUEURS
+=========================== */
+
+.joueur-avatar-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0f3460;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  border: 3px solid #e94560;
+  transition: border-color 0.3s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.joueur-avatar-photo:hover {
+  border-color: #fff;
+  transform: scale(1.05);
+}
+
+.fiche-avatar-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #0f3460;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  border: 2px solid #e94560;
+}
+
+/* ===========================
+   MODAL RECADRAGE
+=========================== */
+
+.crop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transform: none !important;
+}
+
+.crop-carte {
+  background-color: #16213e;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  border-bottom: 4px solid #e94560;
+  max-width: 300px;
+  width: 100%;
+}
+
+.crop-titre {
+  color: #e94560;
+  margin-bottom: 8px;
+}
+
+.crop-sous-titre {
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.crop-zone {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: grab;
+  border: 3px solid #e94560;
+}
+
+.crop-zone:active {
+  cursor: grabbing;
+}
+
+#crop-canvas {
+  display: block;
+  border-radius: 50%;
+}
+
+.crop-boutons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.crop-btn-valider {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.crop-btn-valider:hover {
+  background-color: #388e3c;
+}
+
+.crop-btn-annuler {
+  padding: 10px 20px;
+  background-color: #0f3460;
+  color: #e0e0e0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.crop-btn-annuler:hover {
+  background-color: #e94560;
+  color: white;
+}
+
+/* Info zoom */
+.crop-sous-titre::after {
+  content: ' · 🖱️ Molette pour zoomer';
+  display: block;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* ===========================
+   BOUTON SUPPRESSION AVATAR
+=========================== */
+
+.avatar-conteneur {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.avatar-supprimer {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #e94560;
+  color: white;
+  border: none;
+  font-size: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 10;
+  line-height: 1;
+}
+
+.avatar-conteneur:hover .avatar-supprimer {
+  opacity: 1;
+}
+
+/* ===========================
+   PSEUDOS STEAM / DISCORD
+=========================== */
+
+.joueur-pseudos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #0f3460;
+}
+
+.pseudo-ligne {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pseudo-icone {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pseudo-icone img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.steam-icone img   { filter: invert(1); }
+.discord-icone img { filter: invert(40%) sepia(100%) saturate(500%) hue-rotate(200deg); }
+
+.pseudo-input {
+  flex: 1;
+  padding: 6px 10px;
+  background-color: #1a1a2e;
+  border: 1px solid #0f3460;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 0.85rem;
+  transition: border-color 0.3s;
+}
+
+.pseudo-input:focus {
+  outline: none;
+  border-color: #e94560;
+}
+
+/* Affichage dans les pages équipe */
+.fiche-infos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.fiche-nom {
+  font-weight: bold;
+  color: #e0e0e0;
+  white-space: nowrap;
+}
+
+.fiche-pseudos-groupe {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fiche-pseudo-ligne {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fiche-pseudo-icone {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.fiche-pseudo-steam {
+  font-size: 0.8rem;
+  color: #f3eeee;
+  filter: invert(0);
+}
+
+.fiche-pseudo-discord {
+  font-size: 0.8rem;
+  color: #7289da;
+}

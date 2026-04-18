@@ -268,7 +268,7 @@ function appliquerNoms() {
       if (el) el.textContent = infos[item.cle];
     });
   }
-  
+
 }
 
 document.addEventListener('DOMContentLoaded', appliquerNoms);
