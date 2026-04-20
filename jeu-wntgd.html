@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>LAN Party - We Need To Go Deeper</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <header>
+      <h1>🎮 LAN Party</h1>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="jeux.html">Jeux</a>
+        <a href="equipes.html">Équipes</a>
+        <a href="joueurs.html">Joueurs</a>
+        <a href="classement.html">Classement</a>
+        <a href="planning.html">Planning</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
+
+      <!-- EN-TÊTE JEU -->
+      <div class="jeu-page-header">
+        <div class="jeu-page-banniere">
+          <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/307110/header.jpg"
+            alt="wntgd"
+            class="jeu-page-image"
+          >
+          <div class="jeu-page-overlay">
+            <div class="jeu-page-titre-bloc">
+              <h2>🌊 We Need to Go Deeper</h2>
+              <a href="https://store.steampowered.com/app/307110" target="_blank" class="jeu-steam-btn">
+                Voir sur Steam →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jeu-page-contenu">
+
+        <!-- COLONNE GAUCHE -->
+        <div class="jeu-col-gauche">
+
+          <!-- FORMAT -->
+          <div class="jeu-section">
+            <h3>⚔️ Format</h3>
+            <div class="format-info">
+              <div class="format-tag">Speedrun en 1h30</div>
+              <div class="format-tag">🥇 15 points🥈 10 points 🥉 5 points 4️⃣ 0 point</div>
+            </div>
+          </div>
+
+          <!-- MATCHS -->
+          <div class="jeu-section">
+            <h3>📋 Déroulement des matchs</h3>
+            <div class="matchs-liste" id="matchs-wntgd"></div>
+          </div>
+
+<!-- CAPTURES D'ÉCRAN -->
+<div class="jeu-section">
+  <h3>📸 Captures d'écran — Preuves de profondeur</h3>
+  <p class="sous-titre">Chaque équipe uploade sa meilleure profondeur ici.</p>
+  <div class="captures-grille">
+
+    <div class="capture-bloc equipe-1">
+      <h4>🔴 <span class="capture-equipe-nom" id="nom-capture-1">Équipe 1</span></h4>
+      <div class="capture-zone" id="capture-zone-1" onclick="ouvrirCaptureInput(1)">
+        <img id="capture-img-1" src="" alt="" style="display:none">
+        <span class="capture-placeholder" id="capture-placeholder-1">📸 Cliquer pour uploader</span>
+      </div>
+      <button class="capture-supprimer" onclick="supprimerCapture(1)">🗑️ Supprimer</button>
+    </div>
+
+    <div class="capture-bloc equipe-2">
+      <h4>🔵 <span class="capture-equipe-nom" id="nom-capture-2">Équipe 2</span></h4>
+      <div class="capture-zone" id="capture-zone-2" onclick="ouvrirCaptureInput(2)">
+        <img id="capture-img-2" src="" alt="" style="display:none">
+        <span class="capture-placeholder" id="capture-placeholder-2">📸 Cliquer pour uploader</span>
+      </div>
+      <button class="capture-supprimer" onclick="supprimerCapture(2)">🗑️ Supprimer</button>
+    </div>
+
+    <div class="capture-bloc equipe-3">
+      <h4>🟢 <span class="capture-equipe-nom" id="nom-capture-3">Équipe 3</span></h4>
+      <div class="capture-zone" id="capture-zone-3" onclick="ouvrirCaptureInput(3)">
+        <img id="capture-img-3" src="" alt="" style="display:none">
+        <span class="capture-placeholder" id="capture-placeholder-3">📸 Cliquer pour uploader</span>
+      </div>
+      <button class="capture-supprimer" onclick="supprimerCapture(3)">🗑️ Supprimer</button>
+    </div>
+
+    <div class="capture-bloc equipe-4">
+      <h4>🟡 <span class="capture-equipe-nom" id="nom-capture-4">Équipe 4</span></h4>
+      <div class="capture-zone" id="capture-zone-4" onclick="ouvrirCaptureInput(4)">
+        <img id="capture-img-4" src="" alt="" style="display:none">
+        <span class="capture-placeholder" id="capture-placeholder-4">📸 Cliquer pour uploader</span>
+      </div>
+      <button class="capture-supprimer" onclick="supprimerCapture(4)">🗑️ Supprimer</button>
+    </div>
+
+  </div>
+</div>
+
+        </div>
+
+        <!-- COLONNE DROITE -->
+        <div class="jeu-col-droite">
+
+          <!-- SCORING -->
+          <div class="jeu-section">
+            <h3>🏆 Scoring</h3>
+            <div class="scoring-tableau" id="scoring-wntgd"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer>
+      <p>LAN Party 2026</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/jeu.js"></script>
+    <script>
+      initialiserPageJeu('wntgd');
+    </script>
+
+  </body>
+
+  <script>
+  // Charger les noms d'équipes
+  document.addEventListener('DOMContentLoaded', function() {
+    const data = localStorage.getItem('noms-lan');
+    if (data) {
+      const noms = JSON.parse(data);
+      for (let e = 1; e <= 4; e++) {
+        const el = document.getElementById('nom-capture-' + e);
+        if (el) el.textContent = noms.equipes[e];
+      }
+    }
+    chargerCaptures();
+  });
+
+  function ouvrirCaptureInput(equipeId) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = function(e) {
+      const fichier = e.target.files[0];
+      if (!fichier) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const imageData = evt.target.result;
+        localStorage.setItem('capture-wntgd-' + equipeId, imageData);
+        afficherCapture(equipeId, imageData);
+      };
+      reader.readAsDataURL(fichier);
+    };
+    input.click();
+  }
+
+  function afficherCapture(equipeId, imageData) {
+    const img = document.getElementById('capture-img-' + equipeId);
+    const placeholder = document.getElementById('capture-placeholder-' + equipeId);
+    if (img) {
+      img.src = imageData;
+      img.style.display = 'block';
+    }
+    if (placeholder) placeholder.style.display = 'none';
+  }
+
+  function supprimerCapture(equipeId) {
+    localStorage.removeItem('capture-wntgd-' + equipeId);
+    const img = document.getElementById('capture-img-' + equipeId);
+    const placeholder = document.getElementById('capture-placeholder-' + equipeId);
+    if (img) { img.src = ''; img.style.display = 'none'; }
+    if (placeholder) placeholder.style.display = 'block';
+  }
+
+  function chargerCaptures() {
+    for (let e = 1; e <= 4; e++) {
+      const data = localStorage.getItem('capture-wntgd-' + e);
+      if (data) afficherCapture(e, data);
+    }
+  }
+</script>
+</html>

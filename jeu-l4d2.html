@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>LAN Party - Left 4 Dead 2</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <header>
+      <h1>🎮 LAN Party</h1>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="jeux.html">Jeux</a>
+        <a href="equipes.html">Équipes</a>
+        <a href="joueurs.html">Joueurs</a>
+        <a href="classement.html">Classement</a>
+        <a href="planning.html">Planning</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
+
+      <!-- EN-TÊTE JEU -->
+      <div class="jeu-page-header">
+        <div class="jeu-page-banniere">
+          <img
+            src="https://cdn.steamstatic.com/steam/apps/550/header.jpg"
+            alt="Left 4 Dead 2"
+            class="jeu-page-image"
+          >
+          <div class="jeu-page-overlay">
+            <div class="jeu-page-titre-bloc">
+              <h2>🧟 Left 4 Dead 2</h2>
+              <a href="https://store.steampowered.com/app/550" target="_blank" class="jeu-steam-btn">
+                Voir sur Steam →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jeu-page-contenu">
+
+        <!-- COLONNE GAUCHE -->
+        <div class="jeu-col-gauche">
+
+          <!-- FORMAT -->
+          <div class="jeu-section">
+            <h3>⚔️ Format</h3>
+            <div class="format-info">
+              <div class="format-tag">Duels par équipe / Carte choisie au hasard</div>
+              <div class="format-tag">5 point par victoire / 2 points en cas d’égalité</div>
+              <div class="format-tag">🏆 Max 15 pts par équipe</div>
+            </div>
+          </div>
+
+          <!-- MATCHS -->
+          <div class="jeu-section">
+            <h3>📋 Déroulement des matchs</h3>
+            <div class="matchs-liste" id="matchs-l4d2"></div>
+          </div>
+
+        </div>
+
+        <!-- COLONNE DROITE -->
+        <div class="jeu-col-droite">
+
+          <!-- SCORING -->
+          <div class="jeu-section">
+            <h3>🏆 Scoring</h3>
+            <div class="scoring-tableau" id="scoring-l4d2"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer>
+      <p>LAN Party 2026</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/jeu.js"></script>
+    <script>
+      initialiserPageJeu('l4d2');
+    </script>
+
+  </body>
+</html>

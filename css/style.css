@@ -177,7 +177,7 @@ footer {
 .jeu-carte {
   background-color: #16213e;
   border-radius: 10px;
-  width: 320px;
+  width: 310px;
   overflow: hidden;
   border-bottom: 3px solid #e94560;
   transition: transform 0.3s;
@@ -1681,3 +1681,254 @@ main {
   font-size: 0.8rem;
   color: #7289da;
 }
+
+.jeu-lien-carte {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ===========================
+   PAGES JEUX DÉTAILLÉES
+=========================== */
+
+/* Bannière */
+.jeu-page-header {
+  margin-bottom: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.jeu-page-banniere {
+  position:relative;
+  height: 500px;
+}
+
+.jeu-page-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.jeu-page-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  display: flex;
+  align-items: flex-end;
+}
+
+.jeu-page-titre-bloc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.jeu-page-titre-bloc h2 {
+  color: white;
+  font-size: 1.8rem;
+}
+
+.jeu-steam-btn {
+  background-color: #1b2838;
+  color: #c7d5e0;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+  border: 1px solid #4a9eff;
+}
+
+.jeu-steam-btn:hover {
+  background-color: #4a9eff;
+  color: white;
+}
+
+/* Layout 2 colonnes */
+.jeu-page-contenu {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.jeu-col-gauche {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.jeu-col-droite {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.jeu-section {
+  background-color: #16213e;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.jeu-section h3 {
+  color: #e94560;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+/* Tags format */
+.format-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.format-tag {
+  background-color: #0f3460;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+}
+
+/* Matchs */
+.match-groupe {
+  margin-bottom: 18px;
+}
+
+.match-round {
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.match-ligne {
+  background-color: #1a1a2e;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  border-left: 3px solid #0f3460;
+}
+
+.winner-bracket { border-left-color: #ffd700; }
+.loser-bracket  { border-left-color: #e94560; }
+.scoring-detail { color: #888; font-size: 0.82rem; border-left-color: #4caf50; }
+.capture-info   { color: #4a9eff; border-left-color: #4a9eff; }
+
+.finale {
+  background-color: rgba(233, 69, 96, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.finale .match-round { color: #e94560; }
+.finale .match-ligne { background-color: rgba(233, 69, 96, 0.15); border-left-color: #e94560; }
+
+/* Scoring */
+.scoring-ligne {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: #1a1a2e;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.scoring-medaille { font-size: 1.3rem; }
+
+.scoring-equipe {
+  flex: 1;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.scoring-pts {
+  color: #e94560;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jeu-col-droite { width: 100%; }
+  .jeu-page-banniere { height: 160px; }
+  .jeu-page-titre-bloc { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* ===========================
+   CAPTURES WNTGD
+=========================== */
+
+.captures-grille {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.capture-bloc {
+  background-color: #1a1a2e;
+  border-radius: 10px;
+  padding: 15px;
+  width: 220px;
+  text-align: center;
+}
+
+.capture-bloc h4 {
+  color: #e0e0e0;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.capture-zone {
+  width: 100%;
+  height: 140px;
+  border: 2px dashed #0f3460;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.3s;
+  margin-bottom: 10px;
+}
+
+.capture-zone:hover { border-color: #e94560; }
+
+.capture-zone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.capture-placeholder {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.capture-supprimer {
+  background-color: #0f3460;
+  color: #e0e0e0;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s;
+}
+
+.capture-supprimer:hover { background-color: #e94560; }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>LAN Party - Nidhogg</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <header>
+      <h1>🎮 LAN Party</h1>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="jeux.html">Jeux</a>
+        <a href="equipes.html">Équipes</a>
+        <a href="joueurs.html">Joueurs</a>
+        <a href="classement.html">Classement</a>
+        <a href="planning.html">Planning</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
+
+      <!-- EN-TÊTE JEU -->
+      <div class="jeu-page-header">
+        <div class="jeu-page-banniere">
+          <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/94400/header.jpg"
+            alt="Rocket League"
+            class="jeu-page-image"
+          >
+          <div class="jeu-page-overlay">
+            <div class="jeu-page-titre-bloc">
+              <h2>🗡️ Nidhogg</h2>
+              <a href="https://store.steampowered.com/app/94400" target="_blank" class="jeu-steam-btn">
+                Voir sur Steam →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jeu-page-contenu">
+
+        <!-- COLONNE GAUCHE -->
+        <div class="jeu-col-gauche">
+
+          <!-- FORMAT -->
+          <div class="jeu-section">
+            <h3>⚔️ Format</h3>
+            <div class="format-info">
+              <div class="format-tag">Tournoi 1v1</div>
+              <div class="format-tag">🥇 12 points<br />🥈 8 points <br /> 1/2 final : 3 points <br />1/4 final : 1 point</div>
+              <div class="format-tag">On joue en mangeant</div>
+            </div>
+          </div>
+
+          <!-- MATCHS -->
+          <div class="jeu-section">
+            <h3>📋 Déroulement des matchs</h3>
+            <div class="matchs-liste" id="matchs-nidhogg"></div>
+          </div>
+
+        </div>
+
+        <!-- COLONNE DROITE -->
+        <div class="jeu-col-droite">
+
+          <!-- SCORING -->
+          <div class="jeu-section">
+            <h3>🏆 Scoring</h3>
+            <div class="scoring-tableau" id="scoring-nidhogg"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer>
+      <p>LAN Party 2026</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/jeu.js"></script>
+    <script>
+      initialiserPageJeu('nidhogg');
+    </script>
+
+  </body>
+</html>
