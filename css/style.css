@@ -23,11 +23,11 @@ header {
   background-color: #16213e;
   padding: 20px;
   text-align: center;
-  border-bottom: 3px solid #e94560;
+  border-bottom: 3px solid #94A3B8;
 }
 
 header h1 {
-  color: #e94560;
+  color: #94A3B8;
   font-size: 2rem;
   margin-bottom: 15px;
 }
@@ -49,7 +49,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #e94560;
+  background-color: #94A3B8;
 }
 
 /* ===========================
@@ -63,7 +63,7 @@ main {
 }
 
 main h2 {
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 20px;
   font-size: 1.8rem;
 }
@@ -78,7 +78,7 @@ footer {
   background-color: #16213e;
   color: #888;
   margin-top: 60px;
-  border-top: 3px solid #e94560;
+  border-top: 3px solid #94A3B8;
 }
 
 /* ===========================
@@ -95,7 +95,7 @@ footer {
 
 .hero h2 {
   font-size: 2.5rem;
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 5px;
 }
 
@@ -126,7 +126,7 @@ footer {
   padding: 25px;
   width: 280px;
   text-align: center;
-  border-bottom: 3px solid #e94560;
+  border-bottom: 3px solid #94A3B8;
   transition: transform 0.3s;
 }
 
@@ -141,7 +141,7 @@ footer {
 }
 
 .carte h3 {
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 8px;
   font-size: 1.1rem;
 }
@@ -179,7 +179,7 @@ footer {
   border-radius: 10px;
   width: 310px;
   overflow: hidden;
-  border-bottom: 3px solid #e94560;
+  border-bottom: 3px solid #94A3B8;
   transition: transform 0.3s;
 }
 
@@ -198,7 +198,7 @@ footer {
 .jeu-numero {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #e94560;
+  color: #94A3B8;
 }
 
 .jeu-header h3 {
@@ -240,7 +240,7 @@ footer {
 }
 
 .jeu-scoring h4 {
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 6px;
   font-size: 0.9rem;
 }
@@ -252,7 +252,7 @@ footer {
 
 .jeu-lien {
   display: inline-block;
-  color: #e94560;
+  color: #94A3B8;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: bold;
@@ -339,7 +339,7 @@ footer {
 }
 
 /* Couleurs distinctives par équipe */
-.equipe-1 { border-bottom: 4px solid #e94560; }
+.equipe-1 { border-bottom: 4px solid #eb415d; }
 .equipe-2 { border-bottom: 4px solid #4a9eff; }
 .equipe-3 { border-bottom: 4px solid #4caf50; }
 .equipe-4 { border-bottom: 4px solid #ffd700; }
@@ -377,7 +377,7 @@ footer {
   align-items: center;
   gap: 15px;
   padding: 20px;
-  background-color: #e94560;
+  background-color: #0f3460;
 }
 
 .joueur-header-equipe-2 {
@@ -385,7 +385,7 @@ footer {
   align-items: center;
   gap: 15px;
   padding: 20px;
-  background-color: #4a9eff;
+  background-color: #0f3460;
 }
 
 .joueur-header-equipe-3 {
@@ -393,7 +393,7 @@ footer {
   align-items: center;
   gap: 15px;
   padding: 20px;
-  background-color: #4caf50;
+  background-color: #0f3460;
 }
 
 .joueur-header-equipe-4 {
@@ -401,7 +401,7 @@ footer {
   align-items: center;
   gap: 15px;
   padding: 20px;
-  background-color: #ffd700;
+  background-color: #0f3460;
 }
 
 .joueur-avatar {
@@ -423,7 +423,7 @@ footer {
 }
 
 .joueur-notes h4 {
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 12px;
   font-size: 0.9rem;
 }
@@ -454,14 +454,14 @@ footer {
 
 .note-ligne input:focus {
   outline: none;
-  border-color: #e94560;
+  border-color: #94A3B8;
 }
 
 .btn-sauvegarder {
   width: 100%;
   margin-top: 12px;
   padding: 8px;
-  background-color: #e94560;
+  background-color: #94A3B8;
   color: white;
   border: none;
   border-radius: 5px;
@@ -533,7 +533,7 @@ footer {
 .podium-quatrieme { background-color: #555; height: 60px; color: #e0e0e0; font-size: 1rem; }
 
 /* Couleurs colonnes équipes */
-.equipe-1-color { color: #e94560; }
+.equipe-1-color { color: #94A3B8; }
 .equipe-2-color { color: #4a9eff; }
 .equipe-3-color { color: #4caf50; }
 .equipe-4-color { color: #ffd700; }
@@ -544,7 +544,7 @@ footer {
 }
 
 .scores-section h3 {
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 8px;
   font-size: 1.3rem;
 }
@@ -587,7 +587,7 @@ footer {
 
 .ligne-total td {
   font-weight: bold;
-  color: #e94560;
+  color: #94A3B8;
   background-color: #16213e;
   font-size: 1rem;
 }
@@ -610,7 +610,7 @@ footer {
   width: 50px;
   padding: 4px;
   background-color: #1a1a2e;
-  border: 1px solid #e94560;
+  border: 1px solid #94A3B8;
   border-radius: 5px;
   color: #e0e0e0;
   text-align: center;
@@ -635,7 +635,7 @@ footer {
   font-size: 0.85rem;
 }
 
-.legende-compet   { background-color: rgba(233, 69, 96, 0.2);  border: 1px solid #e94560; }
+.legende-compet   { background-color: rgba(233, 69, 96, 0.2);  border: 1px solid #94A3B8; }
 .legende-pause    { background-color: rgba(255, 165, 0, 0.2);   border: 1px solid orange; }
 .legende-libre    { background-color: rgba(74, 158, 255, 0.2);  border: 1px solid #4a9eff; }
 .legende-special  { background-color: rgba(255, 215, 0, 0.2);   border: 1px solid #ffd700; }
@@ -654,8 +654,8 @@ footer {
 
 .jour-titre h3 {
   font-size: 1.5rem;
-  color: #e94560;
-  border-bottom: 2px solid #e94560;
+  color: #94A3B8;
+  border-bottom: 2px solid #94A3B8;
   padding-bottom: 8px;
   width: 100%;
 }
@@ -728,11 +728,11 @@ footer {
 /* Couleurs par type */
 .creneau-compet {
   background-color: rgba(233, 69, 96, 0.08);
-  border-left: 4px solid #e94560;
+  border-left: 4px solid #94A3B8;
 }
 
 .creneau-compet .creneau-badge {
-  color: #e94560;
+  color: #94A3B8;
 }
 
 .creneau-pause {
@@ -767,7 +767,7 @@ footer {
 =========================== */
 
 nav a.actif {
-  background-color: #e94560;
+  background-color: #94A3B8;
   color: white;
   font-weight: bold;
 }
@@ -878,7 +878,7 @@ main {
   margin-bottom: 30px;
 }
 
-.equipe-1-bg { background: linear-gradient(135deg, rgba(233,69,96,0.2), #16213e); border-left: 5px solid #e94560; }
+.equipe-1-bg { background: linear-gradient(135deg, rgba(233,69,96,0.2), #16213e); border-left: 5px solid #eb415d; }
 .equipe-2-bg { background: linear-gradient(135deg, rgba(74,158,255,0.2), #16213e); border-left: 5px solid #4a9eff; }
 .equipe-3-bg { background: linear-gradient(135deg, rgba(76,175,80,0.2), #16213e); border-left: 5px solid #4caf50; }
 .equipe-4-bg { background: linear-gradient(135deg, rgba(255,215,0,0.2), #16213e); border-left: 5px solid #ffd700; }
@@ -921,7 +921,7 @@ main {
 .stat-valeur {
   font-size: 2rem;
   font-weight: bold;
-  color: #e94560;
+  color: #94A3B8;
 }
 
 .stat-label {
@@ -957,7 +957,7 @@ main {
 }
 
 .equipe-section h3 {
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 15px;
   font-size: 1.1rem;
 }
@@ -976,7 +976,7 @@ main {
 }
 
 .jeu-score-pts {
-  color: #e94560;
+  color: #94A3B8;
   font-weight: bold;
 }
 
@@ -989,7 +989,7 @@ main {
 
 .barre-remplie {
   height: 100%;
-  background: linear-gradient(90deg, #e94560, #ff8a65);
+  background: linear-gradient(90deg, #94A3B8, #ff8a65);
   border-radius: 10px;
   transition: width 1s ease-in-out;
 }
@@ -1071,7 +1071,7 @@ main {
 }
 
 .btn-retour:hover {
-  background-color: #e94560;
+  background-color: #94A3B8;
   color: white;
 }
 
@@ -1156,7 +1156,7 @@ main {
 }
 
 .admin-section h3 {
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 20px;
   font-size: 1.2rem;
 }
@@ -1196,7 +1196,7 @@ main {
 
 .admin-input:focus {
   outline: none;
-  border-color: #e94560;
+  border-color: #94A3B8;
 }
 
 .admin-equipe-bloc {
@@ -1212,7 +1212,7 @@ main {
   font-size: 1rem;
 }
 
-.equipe-1-border { border-left: 4px solid #e94560; }
+.equipe-1-border { border-left: 4px solid #94A3B8; }
 .equipe-2-border { border-left: 4px solid #4a9eff; }
 .equipe-3-border { border-left: 4px solid #4caf50; }
 .equipe-4-border { border-left: 4px solid #ffd700; }
@@ -1244,7 +1244,7 @@ main {
 
 .btn-sauvegarder-admin {
   padding: 12px 30px;
-  background-color: #e94560;
+  background-color: #94A3B8;
   color: white;
   border: none;
   border-radius: 8px;
@@ -1329,7 +1329,7 @@ main {
   width: 100%;
   max-width: 380px;
   text-align: center;
-  border-bottom: 4px solid #e94560;
+  border-bottom: 4px solid #94A3B8;
 }
 
 .login-icone {
@@ -1365,13 +1365,13 @@ main {
 
 .login-input:focus {
   outline: none;
-  border-color: #e94560;
+  border-color: #94A3B8;
 }
 
 .login-btn {
   width: 100%;
   padding: 12px;
-  background-color: #e94560;
+  background-color: #94A3B8;
   color: white;
   border: none;
   border-radius: 8px;
@@ -1385,7 +1385,7 @@ main {
 }
 
 .login-erreur {
-  color: #e94560;
+  color: #94A3B8;
   font-size: 0.9rem;
   margin-top: 12px;
   min-height: 20px;
@@ -1408,7 +1408,7 @@ main {
    AVATARS JOUEURS
 =========================== */
 
-.joueur-avatar-photo {
+.joueur-avatar-photo-equipe1 {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -1420,7 +1420,58 @@ main {
   justify-content: center;
   font-size: 1.8rem;
   cursor: pointer;
-  border: 3px solid #e94560;
+  border: 3px solid #e23f5a;
+  transition: border-color 0.3s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.joueur-avatar-photo-equipe2 {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0f3460;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  border: 3px solid #4a9eff;
+  transition: border-color 0.3s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.joueur-avatar-photo-equipe3 {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0f3460;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  border: 3px solid #4caf50;
+  transition: border-color 0.3s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.joueur-avatar-photo-equipe4 {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0f3460;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  border: 3px solid #ffd700;
   transition: border-color 0.3s, transform 0.2s;
   flex-shrink: 0;
 }
@@ -1442,7 +1493,7 @@ main {
   justify-content: center;
   font-size: 1.4rem;
   flex-shrink: 0;
-  border: 2px solid #e94560;
+  border: 2px solid #7e7978;
 }
 
 /* ===========================
@@ -1468,13 +1519,13 @@ main {
   border-radius: 15px;
   padding: 30px;
   text-align: center;
-  border-bottom: 4px solid #e94560;
+  border-bottom: 4px solid #94A3B8;
   max-width: 300px;
   width: 100%;
 }
 
 .crop-titre {
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 8px;
 }
 
@@ -1492,7 +1543,7 @@ main {
   border-radius: 50%;
   overflow: hidden;
   cursor: grab;
-  border: 3px solid #e94560;
+  border: 3px solid #94A3B8;
 }
 
 .crop-zone:active {
@@ -1537,7 +1588,7 @@ main {
 }
 
 .crop-btn-annuler:hover {
-  background-color: #e94560;
+  background-color: #94A3B8;
   color: white;
 }
 
@@ -1567,7 +1618,7 @@ main {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #e94560;
+  background-color: #94A3B8;
   color: white;
   border: none;
   font-size: 0.7rem;
@@ -1635,7 +1686,7 @@ main {
 
 .pseudo-input:focus {
   outline: none;
-  border-color: #e94560;
+  border-color: #94A3B8;
 }
 
 /* Affichage dans les pages équipe */
@@ -1779,7 +1830,7 @@ main {
 }
 
 .jeu-section h3 {
-  color: #e94560;
+  color: #94A3B8;
   margin-bottom: 15px;
   font-size: 1.1rem;
 }
@@ -1823,7 +1874,7 @@ main {
 }
 
 .winner-bracket { border-left-color: #ffd700; }
-.loser-bracket  { border-left-color: #e94560; }
+.loser-bracket  { border-left-color: #94A3B8; }
 .scoring-detail { color: #888; font-size: 0.82rem; border-left-color: #4caf50; }
 .capture-info   { color: #4a9eff; border-left-color: #4a9eff; }
 
@@ -1833,8 +1884,8 @@ main {
   padding: 10px;
 }
 
-.finale .match-round { color: #e94560; }
-.finale .match-ligne { background-color: rgba(233, 69, 96, 0.15); border-left-color: #e94560; }
+.finale .match-round { color: #94A3B8; }
+.finale .match-ligne { background-color: rgba(233, 69, 96, 0.15); border-left-color: #94A3B8; }
 
 /* Scoring */
 .scoring-ligne {
@@ -1856,7 +1907,7 @@ main {
 }
 
 .scoring-pts {
-  color: #e94560;
+  color: #94A3B8;
   font-weight: bold;
   font-size: 0.95rem;
 }
@@ -1907,7 +1958,7 @@ main {
   margin-bottom: 10px;
 }
 
-.capture-zone:hover { border-color: #e94560; }
+.capture-zone:hover { border-color: #94A3B8; }
 
 .capture-zone img {
   width: 100%;
@@ -1931,4 +1982,4 @@ main {
   transition: background-color 0.3s;
 }
 
-.capture-supprimer:hover { background-color: #e94560; }
+.capture-supprimer:hover { background-color: #94A3B8; }

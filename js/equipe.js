@@ -14,6 +14,20 @@ const JEUX_CONFIG = [
   { id: 'nidhogg',       nom: 'Nidhogg',               emoji: '🗡️', max: 23 },
 ];
 
+const COULEURS_EQUIPES = {
+  1: '#eb415d',
+  2: '#4a9eff',
+  3: '#4caf50',
+  4: '#ffd700'
+};
+
+const COULEURS_EQUIPES_BG = {
+  1: 'rgba(235, 65, 93, 0.2)',
+  2: 'rgba(74, 158, 255, 0.2)',
+  3: 'rgba(76, 175, 80, 0.2)',
+  4: 'rgba(255, 215, 0, 0.2)'
+};
+
 // ================================
 // FONCTION PRINCIPALE
 // ================================
@@ -67,10 +81,10 @@ function initialiserPageEquipe(equipeId, joueursIds) {
   });
 
   // 9. Afficher les fiches joueurs (noms seulement)
-  afficherFichesJoueurs(joueursIds, noms);
+  afficherFichesJoueurs(joueursIds, noms, equipeId);
 
   // 10. Radar d'équipe
-  creerRadarEquipe(joueursIds, notesParJoueur);
+  creerRadarEquipe(joueursIds, notesParJoueur, equipeId);
 
   // 11. Radars individuels
   creerRadarsIndividuels(joueursIds, notesParJoueur, noms);
@@ -107,7 +121,7 @@ function afficherScoresParJeu(equipeId, scores) {
 // FICHES JOUEURS
 // ================================
 
-function afficherFichesJoueurs(joueursIds, noms) {
+function afficherFichesJoueurs(joueursIds, noms, equipeId) {
   const conteneur = document.getElementById('joueurs-fiches');
   if (!conteneur) return;
 
@@ -120,9 +134,10 @@ function afficherFichesJoueurs(joueursIds, noms) {
 
     // Charger l'avatar
     const avatarData = localStorage.getItem('avatar-joueur' + joueurId);
-    const avatarStyle = avatarData
-      ? `background-image:url(${avatarData}); color: transparent;`
-      : '';
+    const couleur = COULEURS_EQUIPES[equipeId];
+const avatarStyle = avatarData
+  ? `background-image:url(${avatarData}); color: transparent; border-color: ${couleur};`
+  : `border-color: ${couleur};`;
 
     // Construire les pseudos HTML
     const steamHTML = pseudos.steam ? `
@@ -159,7 +174,7 @@ function afficherFichesJoueurs(joueursIds, noms) {
 // RADAR ÉQUIPE
 // ================================
 
-function creerRadarEquipe(joueursIds, notesParJoueur) {
+function creerRadarEquipe(joueursIds, notesParJoueur, equipeId) {
   const canvas = document.getElementById('radarChart');
   if (!canvas) return;
 
@@ -183,8 +198,8 @@ function creerRadarEquipe(joueursIds, notesParJoueur) {
       datasets: [{
         label: 'Niveau moyen de l\'équipe',
         data: moyennes,
-        backgroundColor: 'rgba(233, 69, 96, 0.2)',
-        borderColor: '#e94560',
+        backgroundColor: COULEURS_EQUIPES_BG[equipeId],
+        borderColor: COULEURS_EQUIPES[equipeId],
         borderWidth: 2,
         pointBackgroundColor: '#e94560',
         pointRadius: 1,
