@@ -21,73 +21,359 @@
 
     <main>
 
-      <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
+  <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
 
-      <!-- EN-TÊTE JEU -->
-      <div class="jeu-page-header">
-        <div class="jeu-page-banniere">
-          <img
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/2073850/header.jpg"
-            alt="The Finals"
-            class="jeu-page-image"
-          >
-          <div class="jeu-page-overlay">
-            <div class="jeu-page-titre-bloc">
-              <h2>🔫 The Finals</h2>
-              <a href="https://store.steampowered.com/app/2073850" target="_blank" class="jeu-steam-btn">
-                Voir sur Steam →
-              </a>
-            </div>
-          </div>
+  <!-- EN-TÊTE JEU -->
+  <div class="jeu-page-header">
+    <div class="jeu-page-banniere">
+      <img
+        src="https://cdn.cloudflare.steamstatic.com/steam/apps/2073850/header.jpg"
+        alt="The Finals"
+        class="jeu-page-image"
+      >
+      <div class="jeu-page-overlay">
+        <div class="jeu-page-titre-bloc">
+          <h2>🔫 The Finals</h2>
+          <a href="https://store.steampowered.com/app/2073850/THE_FINALS/" target="_blank" class="jeu-steam-btn">
+            Voir sur Steam →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jeu-page-contenu">
+
+    <div class="jeu-col-gauche">
+
+      <!-- FORMAT -->
+      <div class="jeu-section">
+        <h3>⚔️ Format</h3>
+        <div class="format-info">
+          <div class="format-tag">Double élimination</div>
+          <div class="format-tag">🥇 1er : 15 pts</div>
+          <div class="format-tag">🥈 2e : 10 pts</div>
+          <div class="format-tag">🥉 3e : 5 pts</div>
+          <div class="format-tag">4e : 0 pt</div>
         </div>
       </div>
 
-      <div class="jeu-page-contenu">
-
-        <!-- COLONNE GAUCHE -->
-        <div class="jeu-col-gauche">
-
-          <!-- FORMAT -->
-          <div class="jeu-section">
-            <h3>⚔️ Format</h3>
-            <div class="format-info">
-              <div class="format-tag">Tournoi</div>
-              <div class="format-tag">🥇 15 points🥈 10 points 🥉 5 points 4️⃣ 0 point</div>
-            </div>
-          </div>
-
-          <!-- MATCHS -->
-          <div class="jeu-section">
-            <h3>📋 Déroulement des matchs</h3>
-            <div class="matchs-liste" id="matchs-the-finals"></div>
-          </div>
-
-        </div>
-
-        <!-- COLONNE DROITE -->
-        <div class="jeu-col-droite">
-
-          <!-- SCORING -->
-          <div class="jeu-section">
-            <h3>🏆 Scoring</h3>
-            <div class="scoring-tableau" id="scoring-the-finals"></div>
-          </div>
-
-        </div>
-
+      <!-- BRACKET -->
+      <div class="jeu-section">
+        <h3>🏆 Tableau double élimination</h3>
+        <div class="bracket-container" id="bracket-container"></div>
       </div>
 
-    </main>
+    </div>
+
+    <div class="jeu-col-droite">
+
+      <!-- SCORING -->
+      <div class="jeu-section">
+        <h3>🏆 Scoring</h3>
+        <div class="scoring-tableau" id="scoring-the-finals"></div>
+      </div>
+
+      <!-- RÉSULTAT FINAL -->
+      <div class="jeu-section" id="resultat-final" style="display:none">
+        <h3>🎖️ Résultat final</h3>
+        <div id="resultat-contenu"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
 
     <footer>
       <p>LAN Party 2026</p>
     </footer>
 
-    <script src="js/script.js"></script>
-    <script src="js/jeu.js"></script>
-    <script>
-      initialiserPageJeu('the-finals');
-    </script>
+    <<script src="js/script.js"></script>
+<script src="js/jeu.js"></script>
+<script>
+
+// ================================
+// BRACKET DOUBLE ÉLIMINATION
+// ================================
+
+const COULEURS = {
+  1: '#eb415d', 2: '#4a9eff', 3: '#4caf50', 4: '#ffd700'
+};
+
+// Structure du bracket
+// matchId : { equipe1, equipe2, vainqueur, perdant }
+let bracket = {
+  m1: { eq1: null, eq2: null, vainqueur: null, perdant: null },
+  m2: { eq1: null, eq2: null, vainqueur: null, perdant: null },
+  m3: { eq1: null, eq2: null, vainqueur: null, perdant: null }, // Winner
+  m4: { eq1: null, eq2: null, vainqueur: null, perdant: null }, // Loser
+  m5: { eq1: null, eq2: null, vainqueur: null, perdant: null }, // Loser semi
+  mf: { eq1: null, eq2: null, vainqueur: null, perdant: null }, // Finale
+};
+
+let noms = {};
+let equipeIds = [1, 2, 3, 4];
+
+function initialiser() {
+  // Charger les noms
+  const data = localStorage.getItem('noms-lan');
+  noms = data ? JSON.parse(data).equipes : {
+    1: 'Équipe 1', 2: 'Équipe 2', 3: 'Équipe 3', 4: 'Équipe 4'
+  };
+
+  // Charger le bracket sauvegardé
+  const bracketSauve = localStorage.getItem('bracket-the-finals');
+  if (bracketSauve) bracket = JSON.parse(bracketSauve);
+
+  // Initialiser les matchs du Tour 1
+  bracket.m1.eq1 = bracket.m1.eq1 || 1;
+  bracket.m1.eq2 = bracket.m1.eq2 || 2;
+  bracket.m2.eq1 = bracket.m2.eq1 || 3;
+  bracket.m2.eq2 = bracket.m2.eq2 || 4;
+
+  mettreAJourBracket();
+  afficherScoring('the-finals', {});
+}
+
+function sauvegarderBracket() {
+  localStorage.setItem('bracket-the-finals', JSON.stringify(bracket));
+}
+
+// ================================
+// LOGIQUE DU BRACKET
+// ================================
+
+function cliquerVainqueur(matchId, equipeId) {
+  const match = bracket[matchId];
+
+  // Si on reclique sur le vainqueur actuel → annuler
+  if (match.vainqueur === equipeId) {
+    annulerVainqueur(matchId);
+    return;
+  }
+
+  const perdant = equipeId === match.eq1 ? match.eq2 : match.eq1;
+  match.vainqueur = equipeId;
+  match.perdant = perdant;
+
+  // Propager selon le match
+  switch(matchId) {
+    case 'm1':
+      bracket.m3.eq1 = equipeId;
+      bracket.m4.eq1 = perdant;
+      break;
+    case 'm2':
+      bracket.m3.eq2 = equipeId;
+      bracket.m4.eq2 = perdant;
+      break;
+    case 'm3':
+      bracket.mf.eq1 = equipeId;
+      // Le perdant du M3 va en M5
+      bracket.m5.eq1 = perdant;
+      break;
+    case 'm4':
+      bracket.m5.eq2 = equipeId;
+      break;
+    case 'm5':
+      bracket.mf.eq2 = equipeId;
+      break;
+    case 'mf':
+      afficherResultatFinal();
+      break;
+  }
+
+  sauvegarderBracket();
+  mettreAJourBracket();
+}
+
+function annulerVainqueur(matchId) {
+  const match = bracket[matchId];
+
+  // Réinitialiser les matchs suivants selon lequel on annule
+  switch(matchId) {
+    case 'm1':
+      bracket.m3.eq1 = null;
+      bracket.m4.eq1 = null;
+      reinitialiserMatch('m3');
+      reinitialiserMatch('m4');
+      break;
+    case 'm2':
+      bracket.m3.eq2 = null;
+      bracket.m4.eq2 = null;
+      reinitialiserMatch('m3');
+      reinitialiserMatch('m4');
+      break;
+    case 'm3':
+      bracket.mf.eq1 = null;
+      bracket.m5.eq1 = null;
+      reinitialiserMatch('mf');
+      reinitialiserMatch('m5');
+      break;
+    case 'm4':
+      bracket.m5.eq2 = null;
+      reinitialiserMatch('m5');
+      break;
+    case 'm5':
+      bracket.mf.eq2 = null;
+      reinitialiserMatch('mf');
+      break;
+    case 'mf':
+      break;
+  }
+
+  match.vainqueur = null;
+  match.perdant = null;
+  document.getElementById('resultat-final').style.display = 'none';
+
+  sauvegarderBracket();
+  mettreAJourBracket();
+}
+
+function reinitialiserMatch(matchId) {
+  bracket[matchId].vainqueur = null;
+  bracket[matchId].perdant = null;
+}
+
+// ================================
+// AFFICHAGE DU BRACKET
+// ================================
+
+function mettreAJourBracket() {
+  const conteneur = document.getElementById('bracket-container');
+  if (!conteneur) return;
+
+  conteneur.innerHTML = `
+    <div class="bracket-grille">
+
+      <!-- TOUR 1 -->
+      <div class="bracket-colonne">
+        <h4 class="bracket-titre-col">Tour 1</h4>
+        ${renderMatch('m1', 'Match 1')}
+        ${renderMatch('m2', 'Match 2')}
+      </div>
+
+      <!-- TOUR 2 -->
+      <div class="bracket-colonne">
+        <h4 class="bracket-titre-col">Tour 2</h4>
+        <div class="bracket-label-winner">🏆 Winner</div>
+        ${renderMatch('m3', 'Match 3')}
+        <div class="bracket-label-loser">💀 Loser</div>
+        ${renderMatch('m4', 'Match 4')}
+      </div>
+
+      <!-- TOUR 3 -->
+      <div class="bracket-colonne">
+        <h4 class="bracket-titre-col">Tour 3</h4>
+        <div class="bracket-label-loser">💀 Loser</div>
+        ${renderMatch('m5', 'Match 5')}
+      </div>
+
+      <!-- FINALE -->
+      <div class="bracket-colonne">
+        <h4 class="bracket-titre-col">Finale</h4>
+        ${renderMatch('mf', 'Finale')}
+      </div>
+
+    </div>
+  `;
+
+  if (bracket.mf.vainqueur) afficherResultatFinal();
+}
+
+function renderMatch(matchId, label) {
+  const match = bracket[matchId];
+  const eq1 = renderEquipe(matchId, match.eq1, match.vainqueur);
+  const eq2 = renderEquipe(matchId, match.eq2, match.vainqueur);
+
+  return `
+    <div class="bracket-match" id="match-${matchId}">
+      <div class="bracket-match-label">${label}</div>
+      ${eq1}
+      <div class="bracket-vs">vs</div>
+      ${eq2}
+    </div>
+  `;
+}
+
+function renderEquipe(matchId, equipeId, vainqueur) {
+  if (!equipeId) {
+    return `<div class="bracket-equipe bracket-equipe-vide">À déterminer</div>`;
+  }
+
+  const nom = noms[equipeId];
+  const couleur = COULEURS[equipeId];
+  const estVainqueur = vainqueur === equipeId;
+  const estPerdant = vainqueur !== null && vainqueur !== equipeId;
+  const match = bracket[matchId];
+  const peutCliquer = match.eq1 && match.eq2;
+
+  let classes = 'bracket-equipe';
+  if (estVainqueur) classes += ' bracket-vainqueur';
+  if (estPerdant)   classes += ' bracket-perdant';
+  if (peutCliquer)  classes += ' bracket-cliquable';
+
+  const style = `border-left: 3px solid ${couleur}; color: ${estPerdant ? '#555' : couleur}`;
+  const annulerBtn = estVainqueur
+    ? `<span class="bracket-annuler" onclick="event.stopPropagation(); annulerVainqueur('${matchId}')">✕</span>`
+    : '';
+
+  const onclick = peutCliquer && !estPerdant
+    ? `onclick="cliquerVainqueur('${matchId}', ${equipeId})"`
+    : '';
+
+  return `
+    <div class="${classes}" style="${style}" ${onclick}>
+      <span class="bracket-equipe-nom">${nom}</span>
+      ${estVainqueur ? '<span class="bracket-couronne">👑</span>' : ''}
+      ${annulerBtn}
+    </div>
+  `;
+}
+
+// ================================
+// RÉSULTAT FINAL
+// ================================
+
+function afficherResultatFinal() {
+  const section = document.getElementById('resultat-final');
+  const contenu = document.getElementById('resultat-contenu');
+  if (!section || !contenu) return;
+
+  const mf = bracket.mf;
+  if (!mf.vainqueur) return;
+
+  const podium = [
+    { place: '🥇', eq: mf.vainqueur,  pts: 15 },
+    { place: '🥈', eq: mf.perdant,    pts: 10 },
+  ];
+
+  // 3e et 4e = perdants de m3 et m5 (avant finale)
+  const troisieme = bracket.m5.perdant;
+  const quatrieme = bracket.m3.perdant !== mf.vainqueur && bracket.m3.perdant !== mf.perdant
+    ? bracket.m3.perdant
+    : bracket.m5.perdant;
+
+  if (troisieme) podium.push({ place: '🥉', eq: troisieme, pts: 5 });
+
+  contenu.innerHTML = podium.map(function(p) {
+    return `
+      <div class="resultat-ligne" style="border-left: 3px solid ${COULEURS[p.eq]}">
+        <span class="resultat-place">${p.place}</span>
+        <span class="resultat-nom" style="color: ${COULEURS[p.eq]}">${noms[p.eq]}</span>
+        <span class="resultat-pts">${p.pts} pts</span>
+      </div>
+    `;
+  }).join('');
+
+  section.style.display = 'block';
+}
+
+// Lancer
+document.addEventListener('DOMContentLoaded', initialiser);
+
+</script>
 
   </body>
 </html>
