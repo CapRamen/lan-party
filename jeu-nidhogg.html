@@ -71,11 +71,14 @@
 </div>
 
   <!-- PHASE FINALE -->
-  <div class="jeu-section">
-    <h3>🏆 Phase finale</h3>
-    <p class="sous-titre" id="finale-sous-titre">En attente de la fin des groupes...</p>
-    <div id="bracket-finale"></div>
-  </div>
+ <div class="jeu-section">
+  <h3>🏆 Phase finale</h3>
+  <p class="sous-titre" id="finale-sous-titre">En attente de la fin des groupes...</p>
+  <div id="bracket-finale"></div>
+  <button class="btn-calculer-pts" onclick="calculerPointsNidhogg()" id="btn-calculer-nidhogg" style="display:none">
+    📊 Calculer les points depuis le bracket
+  </button>
+</div>
 
 </main>
 
@@ -83,6 +86,7 @@
       <p>LAN Party 2026</p>
     </footer>
 
+    <script src="js/scoring.js"></script>
     <script src="js/script.js"></script>
 <script src="js/jeu.js"></script>
 <script>
@@ -133,7 +137,8 @@ function initialiser() {
 
   afficherGroupes();
   mettreAJourBracketFinale();
-  afficherScoring('nidhogg', {});
+  const nomsScoring = chargerNomsEquipes();
+afficherBlocScoring('nidhogg', 'scoring-nidhogg', nomsScoring);
 }
 
 function initialiserGroupes() {
@@ -484,6 +489,11 @@ function mettreAJourBracketFinale() {
 
     </div>
   `;
+  // Afficher le bouton calculer si finale terminée
+const btnCalculer = document.getElementById('btn-calculer-nidhogg');
+if (btnCalculer) {
+  btnCalculer.style.display = bracketFinale.fi.vainqueur ? 'block' : 'none';
+}
 }
 
 function renderMatchBracket(matchId, label) {
@@ -566,6 +576,42 @@ function reinitialiserTout() {
   // Remettre le message d'attente
   const sousTitre = document.getElementById('finale-sous-titre');
   if (sousTitre) sousTitre.style.display = 'block';
+}
+
+function calculerPointsNidhogg() {
+  if (!bracketFinale.fi.vainqueur) {
+    alert('La finale n\'est pas encore terminée !');
+    return;
+  }
+
+  // Points par joueur selon leur résultat
+  const ptsParJoueur = {};
+
+  // Vainqueur finale → 12 pts
+  ptsParJoueur[bracketFinale.fi.vainqueur] = 12;
+  // Finaliste → 8 pts
+  ptsParJoueur[bracketFinale.fi.perdant] = 8;
+  // Demi-finalistes → 3 pts
+  if (bracketFinale.sf1.perdant) ptsParJoueur[bracketFinale.sf1.perdant] = 3;
+  if (bracketFinale.sf2.perdant) ptsParJoueur[bracketFinale.sf2.perdant] = 3;
+  // Quart-finalistes → 1 pt
+  ['qf1','qf2','qf3','qf4'].forEach(function(qf) {
+    if (bracketFinale[qf].perdant) ptsParJoueur[bracketFinale[qf].perdant] = 1;
+  });
+
+  // Convertir les points joueurs en points équipes
+  const points = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  const EQUIPE_JOUEUR_NIDHOGG = {
+    1:1, 2:1, 3:1, 4:2, 5:2, 6:2,
+    7:3, 8:3, 9:3, 10:4, 11:4, 12:4
+  };
+
+  Object.keys(ptsParJoueur).forEach(function(joueurId) {
+    const equipeId = EQUIPE_JOUEUR_NIDHOGG[joueurId];
+    points[equipeId] += ptsParJoueur[joueurId];
+  });
+
+  appliquerPointsCalcules('nidhogg', points, 'scoring-nidhogg');
 }
 
 document.addEventListener('DOMContentLoaded', initialiser);

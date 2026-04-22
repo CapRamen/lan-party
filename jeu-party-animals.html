@@ -58,6 +58,14 @@
     <div class="scoring-tableau" id="scoring-party-animals"></div>
   </div>
 
+  <div class="jeu-section" style="margin-bottom: 25px;">
+  <h3>🏆 Scoring actuel</h3>
+  <div class="scoring-tableau" id="scoring-party-animals"></div>
+  <button class="btn-calculer-pts" onclick="calculerPointsPA()">
+    📊 Calculer les points depuis les résultats
+  </button>
+</div>
+
   <!-- MATCHS -->
   <div class="jeu-section">
     <h3>📋 Matchs</h3>
@@ -71,6 +79,7 @@
       <p>LAN Party 2026</p>
     </footer>
 
+    <script src="js/scoring.js"></script>
     <script src="js/script.js"></script>
 <script src="js/jeu.js"></script>
 <script>
@@ -133,7 +142,8 @@ function initialiser() {
   resultatsPA = saved ? JSON.parse(saved) : {};
 
   afficherMatchs();
-  afficherScoring('party-animals', {});
+const noms = chargerNomsEquipes();
+afficherBlocScoring('party-animals', 'scoring-party-animals', noms);
 }
 
 function sauvegarder() {
@@ -242,6 +252,15 @@ function hexToRgbaPA(hex, alpha) {
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function calculerPointsPA() {
+  const points = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  MATCHS_PA_CONFIG.forEach(function(match) {
+    const vainqueur = resultatsPA[match.id];
+    if (vainqueur) points[vainqueur] += 5;
+  });
+  appliquerPointsCalcules('party-animals', points, 'scoring-party-animals');
 }
 
 document.addEventListener('DOMContentLoaded', initialiser);

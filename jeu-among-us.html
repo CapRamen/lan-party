@@ -60,6 +60,14 @@
     <div class="scoring-tableau" id="scoring-among-us"></div>
   </div>
 
+  <div class="jeu-section" style="margin-bottom: 25px;">
+  <h3>🏆 Scoring actuel</h3>
+  <div class="scoring-tableau" id="scoring-among-us"></div>
+  <button class="btn-calculer-pts" onclick="calculerPointsAU()">
+    📊 Calculer les points depuis les résultats
+  </button>
+</div>
+
   <!-- PARTIES -->
   <div id="parties-au"></div>
 
@@ -69,6 +77,7 @@
       <p>LAN Party 2026</p>
     </footer>
 
+    <script src="js/scoring.js"></script>
     <script src="js/script.js"></script>
 <script src="js/jeu.js"></script>
 <script>
@@ -112,7 +121,8 @@ function initialiser() {
   if (saved) parties = JSON.parse(saved);
 
   afficherParties();
-  afficherScoring('among-us', {});
+  const noms = chargerNomsEquipes();
+afficherBlocScoring('among-us', 'scoring-among-us', noms);
 }
 
 function sauvegarder() {
@@ -315,6 +325,30 @@ function renderResultatAU(partieId, partie) {
       </div>
     </div>
   `;
+}
+
+function calculerPointsAU() {
+  const points = { 1: 0, 2: 0, 3: 0, 4: 0 };
+
+  ['p1', 'p2', 'p3', 'p4'].forEach(function(partieId) {
+    const partie = parties[partieId];
+    if (!partie.vainqueur) return;
+
+    const crew = getCrewJoueurs(partieId);
+    const killers = partie.killers;
+
+    if (partie.vainqueur === 'killer') {
+      killers.forEach(function(j) {
+        points[EQUIPE_JOUEUR[j]] += 4;
+      });
+    } else {
+      crew.forEach(function(j) {
+        points[EQUIPE_JOUEUR[j]] += 1;
+      });
+    }
+  });
+
+  appliquerPointsCalcules('among-us', points, 'scoring-among-us');
 }
 
 document.addEventListener('DOMContentLoaded', initialiser);

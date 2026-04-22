@@ -3160,3 +3160,91 @@ main {
     flex-direction: column;
   }
 }
+
+/* ===========================
+   SCORING CENTRALISÉ
+=========================== */
+
+.scoring-editable {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scoring-editable-ligne {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background-color: #1a1a2e;
+  border-radius: 8px;
+}
+
+.scoring-equipe-nom {
+  flex: 1;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.scoring-edit-zone {
+  display: flex;
+  align-items: center;
+}
+
+.scoring-pts-affiche {
+  color: #94A3B8;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  min-width: 60px;
+  text-align: center;
+}
+
+.scoring-pts-affiche:hover {
+  border-color: #94A3B8;
+  background-color: rgba(148, 163, 184, 0.1);
+}
+
+.scoring-input-edit {
+  width: 70px;
+  padding: 4px 8px;
+  background-color: #0f3460;
+  border: 1px solid #94A3B8;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.scoring-input-edit:focus {
+  outline: none;
+}
+
+.scoring-hint {
+  color: #555;
+  font-size: 0.78rem;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.btn-calculer-pts {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(148, 163, 184, 0.15);
+  color: #94A3B8;
+  border: 1px solid #94A3B8;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+.btn-calculer-pts:hover {
+  background-color: rgba(148, 163, 184, 0.3);
+}

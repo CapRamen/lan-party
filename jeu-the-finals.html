@@ -74,6 +74,14 @@
         <div class="scoring-tableau" id="scoring-the-finals"></div>
       </div>
 
+      <div class="jeu-section" id="resultat-final" style="display:none">
+  <h3>🎖️ Résultat final</h3>
+  <div id="resultat-contenu"></div>
+  <button class="btn-calculer-pts" onclick="calculerPointsFinales()">
+    📊 Calculer les points depuis le bracket
+  </button>
+</div>
+
       <!-- RÉSULTAT FINAL -->
       <div class="jeu-section" id="resultat-final" style="display:none">
         <h3>🎖️ Résultat final</h3>
@@ -90,7 +98,8 @@
       <p>LAN Party 2026</p>
     </footer>
 
-    <<script src="js/script.js"></script>
+   <script src="js/scoring.js"></script>
+    <script src="js/script.js"></script>
 <script src="js/jeu.js"></script>
 <script>
 
@@ -134,7 +143,8 @@ function initialiser() {
   bracket.m2.eq2 = bracket.m2.eq2 || 4;
 
   mettreAJourBracket();
-  afficherScoring('the-finals', {});
+  const nomsScoring = chargerNomsEquipes();
+afficherBlocScoring('the-finals', 'scoring-the-finals', nomsScoring);
 }
 
 function sauvegarderBracket() {
@@ -368,6 +378,29 @@ function afficherResultatFinal() {
   }).join('');
 
   section.style.display = 'block';
+}
+
+function calculerPointsFinales() {
+  if (!bracket.mf.vainqueur) {
+    alert('La finale n\'est pas encore terminée !');
+    return;
+  }
+
+  const points = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  const ptsLAN = [15, 10, 5, 0];
+
+  // 1er — vainqueur finale
+  points[bracket.mf.vainqueur] = 15;
+  // 2e — perdant finale
+  points[bracket.mf.perdant] = 10;
+  // 3e — perdant M5 (loser bracket)
+  if (bracket.m5.perdant) points[bracket.m5.perdant] = 5;
+  // 4e — perdant M3 qui n'est ni 1er ni 2e ni 3e
+  const equipes = [1, 2, 3, 4];
+  const classe = equipes.filter(function(e) { return points[e] === 0; });
+  if (classe.length === 1) points[classe[0]] = 0;
+
+  appliquerPointsCalcules('the-finals', points, 'scoring-the-finals');
 }
 
 // Lancer

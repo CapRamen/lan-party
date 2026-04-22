@@ -59,6 +59,14 @@
     <div class="scoring-tableau" id="scoring-golf-it"></div>
   </div>
 
+  <div class="jeu-section" style="margin-bottom: 25px;">
+  <h3>🏆 Scoring actuel</h3>
+  <div class="scoring-tableau" id="scoring-golf-it"></div>
+  <button class="btn-calculer-pts" onclick="calculerPointsGolf()">
+    📊 Calculer les points depuis les résultats
+  </button>
+</div>
+
   <!-- SAISIE DES SCORES -->
   <div class="jeu-section" style="margin-bottom: 25px;">
     <div class="golf-header">
@@ -98,6 +106,7 @@
       <p>LAN Party 2026</p>
     </footer>
 
+    <script src="js/scoring.js"></script>
     <script src="js/script.js"></script>
 <script src="js/jeu.js"></script>
 <script>
@@ -137,7 +146,8 @@ function initialiser() {
 
   afficherTableau();
   if (classe) afficherClassement();
-  afficherScoring('golf-it', {});
+const noms = chargerNomsEquipes();
+afficherBlocScoring('golf-it', 'scoring-golf-it', noms);
 }
 
 function sauvegarder() {
@@ -309,6 +319,35 @@ function reinitialiser() {
   afficherTableau();
   const section = document.getElementById('golf-classement-section');
   if (section) section.style.display = 'none';
+}
+
+function calculerPointsGolf() {
+  if (!classe) {
+    alert('Lance d\'abord le classement avec le bouton 🏆 Classer !');
+    return;
+  }
+
+  // Additionner les coups par équipe
+  const totaux = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  for (let j = 1; j <= 12; j++) {
+    if (scoresGolf[j] !== undefined) {
+      totaux[EQUIPE_JOUEUR_GOLF[j]] += scoresGolf[j];
+    }
+  }
+
+  // Trier par total croissant (moins de coups = meilleur)
+  const equipes = [1, 2, 3, 4].sort(function(a, b) {
+    return totaux[a] - totaux[b];
+  });
+
+  // Attribuer les points LAN
+  const ptsLAN = [15, 10, 5, 0];
+  const points = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  equipes.forEach(function(equipeId, idx) {
+    points[equipeId] = ptsLAN[idx];
+  });
+
+  appliquerPointsCalcules('golf-it', points, 'scoring-golf-it');
 }
 
 document.addEventListener('DOMContentLoaded', initialiser);

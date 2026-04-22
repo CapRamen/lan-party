@@ -60,6 +60,14 @@
     <div class="scoring-tableau" id="scoring-aoe1"></div>
   </div>
 
+  <div class="jeu-section" style="margin-bottom: 25px;">
+  <h3>🏆 Scoring actuel</h3>
+  <div class="scoring-tableau" id="scoring-aoe1"></div>
+  <button class="btn-calculer-pts" onclick="calculerPointsAOE()">
+    📊 Calculer les points depuis les résultats
+  </button>
+</div>
+
   <!-- MATCHS -->
   <div class="jeu-section">
     <h3>📋 Matchs</h3>
@@ -76,6 +84,7 @@
       <p>LAN Party 2026</p>
     </footer>
 
+    <script src="js/scoring.js"></script>
     <script src="js/script.js"></script>
 <script src="js/jeu.js"></script>
 <script>
@@ -108,7 +117,8 @@ function initialiser() {
   if (saved) matchs = JSON.parse(saved);
 
   afficherMatchs();
-  afficherScoring('aoe1', {});
+  const noms = chargerNomsEquipes();
+afficherBlocScoring('aoe1', 'scoring-aoe1', noms);
 }
 
 function sauvegarder() {
@@ -280,6 +290,30 @@ function hexToRgbaAOE(hex, alpha) {
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function calculerPointsAOE() {
+  const points = { 1: 0, 2: 0, 3: 0, 4: 0 };
+
+  // Match 2v2
+  const match2v2 = matchs['2v2'];
+  const survivants2v2 = getSurvivants('2v2');
+  if (match2v2.egalite) {
+    survivants2v2.forEach(function(e) { points[e] += 5; });
+  } else if (survivants2v2.length === 1) {
+    points[survivants2v2[0]] += 10;
+  }
+
+  // Match 1v1
+  const match1v1 = matchs['1v1'];
+  const survivants1v1 = getSurvivants('1v1');
+  if (match1v1.egalite) {
+    survivants1v1.forEach(function(e) { points[e] += 2; });
+  } else if (survivants1v1.length === 1) {
+    points[survivants1v1[0]] += 5;
+  }
+
+  appliquerPointsCalcules('aoe1', points, 'scoring-aoe1');
 }
 
 document.addEventListener('DOMContentLoaded', initialiser);

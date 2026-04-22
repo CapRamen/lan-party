@@ -57,6 +57,13 @@
     <h3>🏆 Scoring actuel</h3>
     <div class="scoring-tableau" id="scoring-rocket-league"></div>
   </div>
+<div class="jeu-section" style="margin-bottom: 25px;">
+  <h3>🏆 Scoring actuel</h3>
+  <div class="scoring-tableau" id="scoring-rocket-league"></div>
+  <button class="btn-calculer-pts" onclick="calculerPointsRL()">
+    📊 Calculer les points depuis les résultats
+  </button>
+</div>
 
   <!-- MATCHS -->
   <div class="jeu-section">
@@ -71,6 +78,7 @@
       <p>LAN Party 2026</p>
     </footer>
 
+    <script src="js/scoring.js"></script>
     <script src="js/script.js"></script>
 <script src="js/jeu.js"></script>
 <script>
@@ -103,7 +111,11 @@ function initialiser() {
   resultats = saved ? JSON.parse(saved) : {};
 
   afficherMatchs();
-  afficherScoring('rocket-league', {});
+
+
+ //Afficher le scoring 
+  const nomsEquipes = chargerNomsEquipes();
+  afficherBlocScoring('rocket-league', 'scoring-rocket-league', nomsEquipes);
 }
 
 function sauvegarder() {
@@ -214,6 +226,14 @@ function hexToRgba(hex, alpha) {
   const b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
+function calculerPointsRL() {
+    const points = { 1: 0, 2: 0, 3: 0, 4: 0 };
+    MATCHS_CONFIG.forEach(function(match) {
+      const vainqueur = resultats[match.id];
+      if (vainqueur) points[vainqueur] += 5;
+    });
+    appliquerPointsCalcules('rocket-league', points, 'scoring-rocket-league');
+  }
 
 document.addEventListener('DOMContentLoaded', initialiser);
 

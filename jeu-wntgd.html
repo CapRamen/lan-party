@@ -113,10 +113,11 @@
         <div class="jeu-col-droite">
 
           <!-- SCORING -->
-          <div class="jeu-section">
-            <h3>🏆 Scoring</h3>
-            <div class="scoring-tableau" id="scoring-wntgd"></div>
-          </div>
+          <div class="jeu-section" style="margin-bottom: 25px;">
+  <h3>🏆 Scoring actuel</h3>
+  <div class="scoring-tableau" id="scoring-wntgd"></div>
+  <p class="scoring-hint">💡 Entre les scores manuellement selon la profondeur atteinte par chaque équipe</p>
+</div>
 
         </div>
 
@@ -128,6 +129,7 @@
       <p>LAN Party 2026</p>
     </footer>
 
+    <script src="js/scoring.js"></script>
     <script src="js/script.js"></script>
     <script src="js/jeu.js"></script>
     <script>
@@ -148,6 +150,8 @@
       }
     }
     chargerCaptures();
+ const nomsScoring = chargerNomsEquipes();
+  afficherBlocScoring('wntgd', 'scoring-wntgd', nomsScoring);
   });
 
   function ouvrirCaptureInput(equipeId) {
