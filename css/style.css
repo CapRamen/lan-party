@@ -2121,3 +2121,216 @@ main {
 .resultat-place { font-size: 1.2rem; }
 .resultat-nom   { flex: 1; font-weight: bold; font-size: 0.95rem; }
 .resultat-pts   { color: #94A3B8; font-weight: bold; }
+
+/* ===========================
+   NIDHOGG — GROUPES
+=========================== */
+
+.groupes-grille {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.groupe-bloc {
+  background-color: #1a1a2e;
+  border-radius: 10px;
+  padding: 15px;
+  flex: 1;
+  min-width: 220px;
+}
+
+.groupe-titre {
+  color: #94A3B8;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Classement groupe */
+.groupe-classement {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.groupe-joueur {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background-color: #0f3460;
+  font-size: 0.82rem;
+}
+
+.groupe-qualifie {
+  background-color: rgba(76, 175, 80, 0.15);
+  border-left: 3px solid #4caf50;
+}
+
+.groupe-rang {
+  color: #555;
+  font-size: 0.75rem;
+  min-width: 12px;
+}
+
+.groupe-nom {
+  flex: 1;
+  color: #e0e0e0;
+  font-weight: bold;
+}
+
+.groupe-pts {
+  color: #94A3B8;
+  font-size: 0.78rem;
+}
+
+.groupe-temps {
+  color: #555;
+  font-size: 0.75rem;
+  min-width: 35px;
+  text-align: right;
+}
+
+.groupe-badge-q {
+  color: #4caf50;
+  font-size: 0.8rem;
+}
+
+/* Matchs groupe */
+.groupe-matchs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.groupe-match {
+  background-color: #0f3460;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.groupe-match-joueurs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.groupe-match-joueur {
+  flex: 1;
+  text-align: center;
+  font-size: 0.82rem;
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.gm-cliquable {
+  cursor: pointer;
+  background-color: #16213e;
+  color: #94A3B8;
+}
+
+.gm-cliquable:hover {
+  background-color: #94A3B8;
+  color: #1a1a2e;
+}
+
+.gm-vainqueur {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.gm-perdant {
+  opacity: 0.35;
+  font-size: 0.78rem;
+}
+
+.groupe-match-vs {
+  color: #555;
+  font-size: 0.75rem;
+}
+
+.groupe-match-temps {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.temps-input {
+  flex: 1;
+  padding: 4px 8px;
+  background-color: #1a1a2e;
+  border: 1px solid #0f3460;
+  border-radius: 5px;
+  color: #e0e0e0;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.temps-input:focus {
+  outline: none;
+  border-color: #94A3B8;
+}
+
+.temps-input:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.gm-annuler {
+  color: #e94560;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 2px 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.gm-annuler:hover {
+  background-color: rgba(233, 69, 96, 0.2);
+}
+
+/* Vainqueur final */
+.nidhogg-vainqueur {
+  margin-top: 15px;
+  text-align: center;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(148,163,184,0.2), #16213e);
+  border-radius: 8px;
+  color: #94A3B8;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 1px solid #94A3B8;
+}
+
+.groupes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn-reset-nidhogg {
+  padding: 7px 14px;
+  background-color: #0f3460;
+  color: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s;
+}
+
+.btn-reset-nidhogg:hover {
+  background-color: #e94560;
+  color: white;
+}

@@ -19,76 +19,558 @@
       </nav>
     </header>
 
-    <main>
+  <main>
 
-      <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
+  <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
 
-      <!-- EN-TÊTE JEU -->
-      <div class="jeu-page-header">
-        <div class="jeu-page-banniere">
-          <img
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/94400/header.jpg"
-            alt="Rocket League"
-            class="jeu-page-image"
-          >
-          <div class="jeu-page-overlay">
-            <div class="jeu-page-titre-bloc">
-              <h2>🗡️ Nidhogg</h2>
-              <a href="https://store.steampowered.com/app/94400" target="_blank" class="jeu-steam-btn">
-                Voir sur Steam →
-              </a>
-            </div>
-          </div>
+  <!-- EN-TÊTE -->
+  <div class="jeu-page-header">
+    <div class="jeu-page-banniere">
+      <img
+        src="https://cdn.cloudflare.steamstatic.com/steam/apps/94400/header.jpg"
+        alt="Nidhogg"
+        class="jeu-page-image"
+      >
+      <div class="jeu-page-overlay">
+        <div class="jeu-page-titre-bloc">
+          <h2>🗡️ Nidhogg</h2>
+          <a href="https://store.steampowered.com/app/94400/Nidhogg/" target="_blank" class="jeu-steam-btn">
+            Voir sur Steam →
+          </a>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="jeu-page-contenu">
+  <!-- FORMAT -->
+  <div class="jeu-section" style="margin-bottom: 25px;">
+    <h3>⚔️ Format</h3>
+    <div class="format-info">
+      <div class="format-tag">Tournoi 1v1</div>
+      <div class="format-tag">🥇 1er : 12 pts</div>
+      <div class="format-tag">🥈 2e : 8 pts</div>
+      <div class="format-tag">🥉 Demi-finalistes : 3 pts</div>
+      <div class="format-tag">⚔️ Quart-finalistes : 1 pt</div>
+    </div>
+  </div>
 
-        <!-- COLONNE GAUCHE -->
-        <div class="jeu-col-gauche">
+  <!-- SCORING -->
+  <div class="jeu-section" style="margin-bottom: 25px;">
+    <h3>🏆 Scoring actuel</h3>
+    <div class="scoring-tableau" id="scoring-nidhogg"></div>
+  </div>
 
-          <!-- FORMAT -->
-          <div class="jeu-section">
-            <h3>⚔️ Format</h3>
-            <div class="format-info">
-              <div class="format-tag">Tournoi 1v1</div>
-              <div class="format-tag">🥇 12 points<br />🥈 8 points <br /> 1/2 final : 3 points <br />1/4 final : 1 point</div>
-              <div class="format-tag">On joue en mangeant</div>
-            </div>
-          </div>
+  <!-- PHASE DE GROUPES -->
+<div class="jeu-section" style="margin-bottom: 25px;">
+  <h3>👥 Phase de groupes</h3>
+  <div class="groupes-header">
+    <p class="sous-titre">1 point par victoire, 0 par défaite. Départage à la confrontation directe. En cas de triple égalité, le temps de victoire le plus rapide l'emporte !</p>
+    <button class="btn-reset-nidhogg" onclick="reinitialiserTout()">🔄 Réinitialiser tout</button>
+  </div>
+  <div class="groupes-grille" id="groupes-grille"></div>
+</div>
 
-          <!-- MATCHS -->
-          <div class="jeu-section">
-            <h3>📋 Déroulement des matchs</h3>
-            <div class="matchs-liste" id="matchs-nidhogg"></div>
-          </div>
+  <!-- PHASE FINALE -->
+  <div class="jeu-section">
+    <h3>🏆 Phase finale</h3>
+    <p class="sous-titre" id="finale-sous-titre">En attente de la fin des groupes...</p>
+    <div id="bracket-finale"></div>
+  </div>
 
-        </div>
-
-        <!-- COLONNE DROITE -->
-        <div class="jeu-col-droite">
-
-          <!-- SCORING -->
-          <div class="jeu-section">
-            <h3>🏆 Scoring</h3>
-            <div class="scoring-tableau" id="scoring-nidhogg"></div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </main>
+</main>
 
     <footer>
       <p>LAN Party 2026</p>
     </footer>
 
     <script src="js/script.js"></script>
-    <script src="js/jeu.js"></script>
-    <script>
-      initialiserPageJeu('nidhogg');
-    </script>
+<script src="js/jeu.js"></script>
+<script>
+
+// ================================
+// CONFIGURATION
+// ================================
+
+const GROUPES_CONFIG = {
+  A: { joueurs: [1, 4, 7]  },
+  B: { joueurs: [2, 5, 10] },
+  C: { joueurs: [3, 8, 11] },
+  D: { joueurs: [6, 9, 12] }
+};
+
+const BRACKET_CONFIG = [
+  { id: 'qf1', label: 'QF1', eq1: null, eq2: null },
+  { id: 'qf2', label: 'QF2', eq1: null, eq2: null },
+  { id: 'qf3', label: 'QF3', eq1: null, eq2: null },
+  { id: 'qf4', label: 'QF4', eq1: null, eq2: null },
+  { id: 'sf1', label: 'DF1', eq1: null, eq2: null },
+  { id: 'sf2', label: 'DF2', eq1: null, eq2: null },
+  { id: 'fi',  label: 'Finale', eq1: null, eq2: null },
+];
+
+let noms = {};
+let groupes = {};
+let bracketFinale = {};
+
+// ================================
+// INITIALISATION
+// ================================
+
+function initialiser() {
+  // Charger les noms
+  const nomsData = localStorage.getItem('noms-lan');
+  noms = nomsData ? JSON.parse(nomsData).joueurs : {};
+  for (let j = 1; j <= 12; j++) {
+    if (!noms[j]) noms[j] = 'Joueur ' + j;
+  }
+
+  // Charger les données sauvegardées
+  const groupesSauves = localStorage.getItem('nidhogg-groupes');
+  const bracketSauve  = localStorage.getItem('nidhogg-bracket');
+
+  groupes = groupesSauves ? JSON.parse(groupesSauves) : initialiserGroupes();
+  bracketFinale = bracketSauve ? JSON.parse(bracketSauve) : initialiserBracket();
+
+  afficherGroupes();
+  mettreAJourBracketFinale();
+  afficherScoring('nidhogg', {});
+}
+
+function initialiserGroupes() {
+  const g = {};
+  Object.keys(GROUPES_CONFIG).forEach(function(lettre) {
+    const joueurs = GROUPES_CONFIG[lettre].joueurs;
+    g[lettre] = {
+      matchs: [
+        { j1: joueurs[0], j2: joueurs[1], vainqueur: null, temps: '' },
+        { j1: joueurs[0], j2: joueurs[2], vainqueur: null, temps: '' },
+        { j1: joueurs[1], j2: joueurs[2], vainqueur: null, temps: '' },
+      ]
+    };
+  });
+  return g;
+}
+
+function initialiserBracket() {
+  const b = {};
+  BRACKET_CONFIG.forEach(function(m) {
+    b[m.id] = { eq1: null, eq2: null, vainqueur: null, perdant: null };
+  });
+  return b;
+}
+
+// ================================
+// CLASSEMENT GROUPE
+// ================================
+
+function calculerClassement(lettre) {
+  const groupe = groupes[lettre];
+  const joueurs = GROUPES_CONFIG[lettre].joueurs;
+
+  // Initialiser les stats
+  const stats = {};
+  joueurs.forEach(function(j) {
+    stats[j] = { points: 0, tempsMin: Infinity };
+  });
+
+  // Compter les victoires et temps minimum de victoire
+  groupe.matchs.forEach(function(match) {
+    if (!match.vainqueur) return;
+    stats[match.vainqueur].points++;
+
+    const tempsSecondes = parseTemps(match.temps);
+    if (tempsSecondes > 0 && tempsSecondes < stats[match.vainqueur].tempsMin) {
+      stats[match.vainqueur].tempsMin = tempsSecondes;
+    }
+  });
+
+  // Détecter la triple égalité
+  const tousEgaux = joueurs.every(function(j) {
+    return stats[j].points === stats[joueurs[0]].points;
+  });
+
+  const classe = [...joueurs].sort(function(a, b) {
+    // 1. Points
+    if (stats[b].points !== stats[a].points) {
+      return stats[b].points - stats[a].points;
+    }
+
+    // 2. Si triple égalité → on va directement au temps
+    if (!tousEgaux) {
+      // Confrontation directe (seulement si pas triple égalité)
+      const confrontation = trouverConfrontation(groupe, a, b);
+      if (confrontation) return confrontation === a ? -1 : 1;
+    }
+
+    // 3. Temps le plus rapide
+    const tA = stats[a].tempsMin === Infinity ? 99999 : stats[a].tempsMin;
+    const tB = stats[b].tempsMin === Infinity ? 99999 : stats[b].tempsMin;
+    return tA - tB;
+  });
+
+  return { classe, stats };
+}
+
+function trouverConfrontation(groupe, j1, j2) {
+  const match = groupe.matchs.find(function(m) {
+    return (m.j1 === j1 && m.j2 === j2) || (m.j1 === j2 && m.j2 === j1);
+  });
+  if (match && match.vainqueur) return match.vainqueur;
+  return null;
+}
+
+function parseTemps(temps) {
+  if (!temps) return 0;
+  const parts = temps.split(':');
+  if (parts.length === 2) {
+    return parseInt(parts[0]) * 60 + parseInt(parts[1]);
+  }
+  return parseInt(temps) || 0;
+}
+
+// ================================
+// AFFICHAGE DES GROUPES
+// ================================
+
+function afficherGroupes() {
+  const conteneur = document.getElementById('groupes-grille');
+  if (!conteneur) return;
+  conteneur.innerHTML = '';
+
+  Object.keys(GROUPES_CONFIG).forEach(function(lettre) {
+    const { classe, stats } = calculerClassement(lettre);
+    const groupe = groupes[lettre];
+
+    const bloc = document.createElement('div');
+    bloc.className = 'groupe-bloc';
+    bloc.innerHTML = `
+      <h4 class="groupe-titre">Groupe ${lettre}</h4>
+
+      <!-- Classement -->
+      <div class="groupe-classement">
+        ${classe.map(function(j, idx) {
+          const qualifie = idx < 2;
+          const tempsAff = stats[j].tempsMin === Infinity ? '—' : formatTemps(stats[j].tempsMin);
+          return `
+            <div class="groupe-joueur ${qualifie ? 'groupe-qualifie' : ''}">
+              <span class="groupe-rang">${idx + 1}</span>
+              <span class="groupe-nom">${noms[j]}</span>
+              <span class="groupe-pts">${stats[j].points} pt${stats[j].points > 1 ? 's' : ''}</span>
+              <span class="groupe-temps">${tempsAff}</span>
+              ${qualifie ? '<span class="groupe-badge-q">✓</span>' : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+
+      <!-- Matchs -->
+      <div class="groupe-matchs">
+        ${groupe.matchs.map(function(match, idx) {
+          return renderMatchGroupe(lettre, idx, match);
+        }).join('')}
+      </div>
+    `;
+    conteneur.appendChild(bloc);
+  });
+
+  verifierGroupesTermines();
+}
+
+function renderMatchGroupe(lettre, idx, match) {
+  const j1Gagne = match.vainqueur === match.j1;
+  const j2Gagne = match.vainqueur === match.j2;
+
+  return `
+    <div class="groupe-match">
+      <div class="groupe-match-joueurs">
+        <span
+          class="groupe-match-joueur ${j1Gagne ? 'gm-vainqueur' : ''} ${j2Gagne ? 'gm-perdant' : ''} ${!match.vainqueur ? 'gm-cliquable' : ''}"
+          onclick="cliquerMatchGroupe('${lettre}', ${idx}, ${match.j1})"
+        >${noms[match.j1]}</span>
+        <span class="groupe-match-vs">vs</span>
+        <span
+          class="groupe-match-joueur ${j2Gagne ? 'gm-vainqueur' : ''} ${j1Gagne ? 'gm-perdant' : ''} ${!match.vainqueur ? 'gm-cliquable' : ''}"
+          onclick="cliquerMatchGroupe('${lettre}', ${idx}, ${match.j2})"
+        >${noms[match.j2]}</span>
+      </div>
+      <div class="groupe-match-temps">
+        <input
+          type="text"
+          class="temps-input"
+          placeholder="mm:ss"
+          value="${match.temps || ''}"
+          onchange="sauvegarderTemps('${lettre}', ${idx}, this.value)"
+          ${!match.vainqueur ? 'disabled' : ''}
+        >
+        ${match.vainqueur ? `<span class="gm-annuler" onclick="annulerMatchGroupe('${lettre}', ${idx})">✕</span>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function cliquerMatchGroupe(lettre, idx, joueurId) {
+  const match = groupes[lettre].matchs[idx];
+  if (match.vainqueur) return;
+  match.vainqueur = joueurId;
+  sauvegarder();
+  afficherGroupes();
+}
+
+function annulerMatchGroupe(lettre, idx) {
+  groupes[lettre].matchs[idx].vainqueur = null;
+  groupes[lettre].matchs[idx].temps = '';
+  sauvegarder();
+  afficherGroupes();
+}
+
+function sauvegarderTemps(lettre, idx, valeur) {
+  groupes[lettre].matchs[idx].temps = valeur;
+  sauvegarder();
+  afficherGroupes();
+}
+
+function formatTemps(secondes) {
+  if (secondes === Infinity || !secondes) return '—';
+  const m = Math.floor(secondes / 60);
+  const s = secondes % 60;
+  return m + ':' + (s < 10 ? '0' + s : s);
+}
+
+// ================================
+// VÉRIFICATION FIN DE GROUPES
+// ================================
+
+function verifierGroupesTermines() {
+  let tousTermines = true;
+  Object.keys(groupes).forEach(function(lettre) {
+    groupes[lettre].matchs.forEach(function(match) {
+      if (!match.vainqueur) tousTermines = false;
+    });
+  });
+
+  const sousTitre = document.getElementById('finale-sous-titre');
+
+  if (tousTermines) {
+    remplirBracketDepuisGroupes();
+    if (sousTitre) sousTitre.style.display = 'none';
+  } else {
+    if (sousTitre) sousTitre.style.display = 'block';
+  }
+}
+
+function remplirBracketDepuisGroupes() {
+  // Récupérer les qualifiés de chaque groupe
+  const qualifies = {};
+  Object.keys(GROUPES_CONFIG).forEach(function(lettre) {
+    const { classe } = calculerClassement(lettre);
+    qualifies[lettre] = { premier: classe[0], deuxieme: classe[1] };
+  });
+
+  // QF1 : 1er A vs 2e B
+  bracketFinale.qf1.eq1 = qualifies.A.premier;
+  bracketFinale.qf1.eq2 = qualifies.B.deuxieme;
+  // QF2 : 1er C vs 2e D
+  bracketFinale.qf2.eq1 = qualifies.C.premier;
+  bracketFinale.qf2.eq2 = qualifies.D.deuxieme;
+  // QF3 : 2e A vs 1er B
+  bracketFinale.qf3.eq1 = qualifies.A.deuxieme;
+  bracketFinale.qf3.eq2 = qualifies.B.premier;
+  // QF4 : 2e C vs 1er D
+  bracketFinale.qf4.eq1 = qualifies.C.deuxieme;
+  bracketFinale.qf4.eq2 = qualifies.D.premier;
+
+  sauvegarder();
+  mettreAJourBracketFinale();
+}
+
+// ================================
+// BRACKET FINALE
+// ================================
+
+function cliquerBracket(matchId, joueurId) {
+  const match = bracketFinale[matchId];
+  if (!match || !joueurId) return;
+
+  if (match.vainqueur === joueurId) {
+    annulerBracket(matchId);
+    return;
+  }
+
+  const perdant = joueurId === match.eq1 ? match.eq2 : match.eq1;
+  match.vainqueur = joueurId;
+  match.perdant = perdant;
+
+  // Propager
+  switch(matchId) {
+    case 'qf1': bracketFinale.sf1.eq1 = joueurId; break;
+    case 'qf2': bracketFinale.sf1.eq2 = joueurId; break;
+    case 'qf3': bracketFinale.sf2.eq1 = joueurId; break;
+    case 'qf4': bracketFinale.sf2.eq2 = joueurId; break;
+    case 'sf1': bracketFinale.fi.eq1  = joueurId; break;
+    case 'sf2': bracketFinale.fi.eq2  = joueurId; break;
+  }
+
+  sauvegarder();
+  mettreAJourBracketFinale();
+}
+
+function annulerBracket(matchId) {
+  const match = bracketFinale[matchId];
+  match.vainqueur = null;
+  match.perdant = null;
+
+  switch(matchId) {
+    case 'qf1':
+      bracketFinale.sf1.eq1 = null;
+      reinitBracket('sf1');
+      break;
+    case 'qf2':
+      bracketFinale.sf1.eq2 = null;
+      reinitBracket('sf1');
+      break;
+    case 'qf3':
+      bracketFinale.sf2.eq1 = null;
+      reinitBracket('sf2');
+      break;
+    case 'qf4':
+      bracketFinale.sf2.eq2 = null;
+      reinitBracket('sf2');
+      break;
+    case 'sf1':
+      bracketFinale.fi.eq1 = null;
+      reinitBracket('fi');
+      break;
+    case 'sf2':
+      bracketFinale.fi.eq2 = null;
+      reinitBracket('fi');
+      break;
+  }
+
+  sauvegarder();
+  mettreAJourBracketFinale();
+}
+
+function reinitBracket(matchId) {
+  bracketFinale[matchId].vainqueur = null;
+  bracketFinale[matchId].perdant = null;
+}
+
+function mettreAJourBracketFinale() {
+  const conteneur = document.getElementById('bracket-finale');
+  if (!conteneur) return;
+
+  conteneur.innerHTML = `
+    <div class="bracket-grille">
+
+      <div class="bracket-colonne">
+        <h4 class="bracket-titre-col">Quarts</h4>
+        ${renderMatchBracket('qf1', 'QF1')}
+        ${renderMatchBracket('qf2', 'QF2')}
+        ${renderMatchBracket('qf3', 'QF3')}
+        ${renderMatchBracket('qf4', 'QF4')}
+      </div>
+
+      <div class="bracket-colonne">
+        <h4 class="bracket-titre-col">Demis</h4>
+        ${renderMatchBracket('sf1', 'DF1')}
+        ${renderMatchBracket('sf2', 'DF2')}
+      </div>
+
+      <div class="bracket-colonne">
+        <h4 class="bracket-titre-col">Finale</h4>
+        ${renderMatchBracket('fi', 'Finale')}
+        ${bracketFinale.fi.vainqueur ? renderVainqueurFinal() : ''}
+      </div>
+
+    </div>
+  `;
+}
+
+function renderMatchBracket(matchId, label) {
+  const match = bracketFinale[matchId];
+  return `
+    <div class="bracket-match">
+      <div class="bracket-match-label">${label}</div>
+      ${renderJoueurBracket(matchId, match.eq1, match.vainqueur)}
+      <div class="bracket-vs">vs</div>
+      ${renderJoueurBracket(matchId, match.eq2, match.vainqueur)}
+    </div>
+  `;
+}
+
+function renderJoueurBracket(matchId, joueurId, vainqueur) {
+  if (!joueurId) {
+    return `<div class="bracket-equipe bracket-equipe-vide">À déterminer</div>`;
+  }
+
+  const nom = noms[joueurId];
+  const estVainqueur = vainqueur === joueurId;
+  const estPerdant = vainqueur !== null && vainqueur !== joueurId;
+  const match = bracketFinale[matchId];
+  const peutCliquer = match.eq1 && match.eq2 && !estPerdant;
+
+  let classes = 'bracket-equipe';
+  if (estVainqueur) classes += ' bracket-vainqueur';
+  if (estPerdant)   classes += ' bracket-perdant';
+  if (peutCliquer)  classes += ' bracket-cliquable';
+
+  const annulerBtn = estVainqueur
+    ? `<span class="bracket-annuler" onclick="event.stopPropagation(); annulerBracket('${matchId}')">✕</span>`
+    : '';
+
+  const onclick = peutCliquer
+    ? `onclick="cliquerBracket('${matchId}', ${joueurId})"`
+    : '';
+
+  return `
+    <div class="${classes}" ${onclick}>
+      <span class="bracket-equipe-nom">${nom}</span>
+      ${estVainqueur ? '<span class="bracket-couronne">👑</span>' : ''}
+      ${annulerBtn}
+    </div>
+  `;
+}
+
+function renderVainqueurFinal() {
+  const v = bracketFinale.fi.vainqueur;
+  return `
+    <div class="nidhogg-vainqueur">
+      🏆 ${noms[v]}
+    </div>
+  `;
+}
+
+// ================================
+// SAUVEGARDE
+// ================================
+
+function sauvegarder() {
+  localStorage.setItem('nidhogg-groupes',  JSON.stringify(groupes));
+  localStorage.setItem('nidhogg-bracket',  JSON.stringify(bracketFinale));
+}
+
+function reinitialiserTout() {
+  const confirmation = confirm('Réinitialiser tous les résultats de groupes et le bracket final ?');
+  if (!confirmation) return;
+
+  localStorage.removeItem('nidhogg-groupes');
+  localStorage.removeItem('nidhogg-bracket');
+
+  groupes = initialiserGroupes();
+  bracketFinale = initialiserBracket();
+
+  sauvegarder();
+  afficherGroupes();
+  mettreAJourBracketFinale();
+
+  // Remettre le message d'attente
+  const sousTitre = document.getElementById('finale-sous-titre');
+  if (sousTitre) sousTitre.style.display = 'block';
+}
+
+document.addEventListener('DOMContentLoaded', initialiser);
+
+</script>
 
   </body>
 </html>
