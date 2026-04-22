@@ -21,74 +21,232 @@
 
     <main>
 
-      <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
+  <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
 
-      <!-- EN-TÊTE JEU -->
-      <div class="jeu-page-header">
-        <div class="jeu-page-banniere">
-          <img
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1260320/header.jpg"
-            alt="Party animals"
-            class="jeu-page-image"
-          >
-          <div class="jeu-page-overlay">
-            <div class="jeu-page-titre-bloc">
-              <h2>🐾 Party Animals</h2>
-              <a href="https://store.steampowered.com/app/1260320" target="_blank" class="jeu-steam-btn">
-                Voir sur Steam →
-              </a>
-            </div>
-          </div>
+  <!-- EN-TÊTE -->
+  <div class="jeu-page-header">
+    <div class="jeu-page-banniere">
+      <img
+        src="https://cdn.cloudflare.steamstatic.com/steam/apps/1260320/header.jpg"
+        alt="Party Animals"
+        class="jeu-page-image"
+      >
+      <div class="jeu-page-overlay">
+        <div class="jeu-page-titre-bloc">
+          <h2>🐾 Party Animals</h2>
+          <a href="https://store.steampowered.com/app/1260320/Party_Animals/" target="_blank" class="jeu-steam-btn">
+            Voir sur Steam →
+          </a>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="jeu-page-contenu">
+  <!-- FORMAT -->
+  <div class="jeu-section" style="margin-bottom: 25px;">
+    <h3>⚔️ Format</h3>
+    <div class="format-info">
+      <div class="format-tag">3 matchs en 2v2v2v2</div>
+      <div class="format-tag">5 pts par victoire</div>
+      <div class="format-tag">🏆 Max 15 pts par équipe</div>
+    </div>
+  </div>
 
-        <!-- COLONNE GAUCHE -->
-        <div class="jeu-col-gauche">
+  <!-- SCORING -->
+  <div class="jeu-section" style="margin-bottom: 25px;">
+    <h3>🏆 Scoring actuel</h3>
+    <div class="scoring-tableau" id="scoring-party-animals"></div>
+  </div>
 
-          <!-- FORMAT -->
-          <div class="jeu-section">
-            <h3>⚔️ Format</h3>
-            <div class="format-info">
-              <div class="format-tag">3 match en 2v2v2v2</div>
-              <div class="format-tag">5 pts par victoire</div>
-              <div class="format-tag">🏆 Max 15 pts par équipe</div>
-            </div>
-          </div>
+  <!-- MATCHS -->
+  <div class="jeu-section">
+    <h3>📋 Matchs</h3>
+    <p class="sous-titre">Clique sur l'équipe victorieuse · ✕ pour annuler</p>
+    <div id="matchs-pa"></div>
+  </div>
 
-          <!-- MATCHS -->
-          <div class="jeu-section">
-            <h3>📋 Déroulement des matchs</h3>
-            <div class="matchs-liste" id="matchs-party-animals"></div>
-          </div>
-
-        </div>
-
-        <!-- COLONNE DROITE -->
-        <div class="jeu-col-droite">
-
-          <!-- SCORING -->
-          <div class="jeu-section">
-            <h3>🏆 Scoring</h3>
-            <div class="scoring-tableau" id="scoring-party-animals"></div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </main>
+</main>
 
     <footer>
       <p>LAN Party 2026</p>
     </footer>
 
     <script src="js/script.js"></script>
-    <script src="js/jeu.js"></script>
-    <script>
-      initialiserPageJeu('party-animals');
-    </script>
+<script src="js/jeu.js"></script>
+<script>
+
+const COULEURS_PA = {
+  1: '#eb415d', 2: '#4a9eff', 3: '#4caf50', 4: '#ffd700'
+};
+
+// Chaque match contient 4 équipes de 2 joueurs
+const MATCHS_PA_CONFIG = [
+  {
+    id: 'pa1',
+    label: 'Match 1',
+    equipes: [
+      { equipeId: 1, joueurs: [1, 2]   },
+      { equipeId: 2, joueurs: [4, 5]   },
+      { equipeId: 3, joueurs: [7, 8]   },
+      { equipeId: 4, joueurs: [10, 11] },
+    ]
+  },
+  {
+    id: 'pa2',
+    label: 'Match 2',
+    equipes: [
+      { equipeId: 1, joueurs: [1, 3]   },
+      { equipeId: 2, joueurs: [4, 6]   },
+      { equipeId: 3, joueurs: [7, 9]   },
+      { equipeId: 4, joueurs: [10, 12] },
+    ]
+  },
+  {
+    id: 'pa3',
+    label: 'Match 3',
+    equipes: [
+      { equipeId: 1, joueurs: [2, 3]   },
+      { equipeId: 2, joueurs: [5, 6]   },
+      { equipeId: 3, joueurs: [8, 9]   },
+      { equipeId: 4, joueurs: [11, 12] },
+    ]
+  },
+];
+
+let nomsPA = { equipes: {}, joueurs: {} };
+let resultatsPA = {};
+
+// ================================
+// INITIALISATION
+// ================================
+
+function initialiser() {
+  const nomsData = localStorage.getItem('noms-lan');
+  if (nomsData) {
+    nomsPA = JSON.parse(nomsData);
+  } else {
+    for (let e = 1; e <= 4; e++) nomsPA.equipes[e] = 'Équipe ' + e;
+    for (let j = 1; j <= 12; j++) nomsPA.joueurs[j] = 'Joueur ' + j;
+  }
+
+  const saved = localStorage.getItem('pa-resultats');
+  resultatsPA = saved ? JSON.parse(saved) : {};
+
+  afficherMatchs();
+  afficherScoring('party-animals', {});
+}
+
+function sauvegarder() {
+  localStorage.setItem('pa-resultats', JSON.stringify(resultatsPA));
+}
+
+// ================================
+// LOGIQUE
+// ================================
+
+function cliquerVainqueur(matchId, equipeId) {
+  if (resultatsPA[matchId] === equipeId) {
+    delete resultatsPA[matchId];
+  } else {
+    resultatsPA[matchId] = equipeId;
+  }
+  sauvegarder();
+  afficherMatchs();
+}
+
+function annulerMatch(matchId) {
+  delete resultatsPA[matchId];
+  sauvegarder();
+  afficherMatchs();
+}
+
+// ================================
+// AFFICHAGE
+// ================================
+
+function afficherMatchs() {
+  const conteneur = document.getElementById('matchs-pa');
+  if (!conteneur) return;
+
+  conteneur.innerHTML = MATCHS_PA_CONFIG.map(function(match) {
+    return renderMatchPA(match);
+  }).join('');
+}
+
+function renderMatchPA(match) {
+  const vainqueur = resultatsPA[match.id] || null;
+
+  return `
+    <div class="pa-match">
+
+      <div class="pa-match-header">
+        <h4 class="pa-match-titre">${match.label} — 2v2v2v2</h4>
+      </div>
+
+      <div class="pa-match-contenu">
+
+        <!-- Les 4 équipes -->
+        <div class="pa-equipes">
+          ${match.equipes.map(function(eq) {
+            return renderEquipePA(match.id, eq, vainqueur);
+          }).join(`<div class="pa-vs">VS</div>`)}
+        </div>
+
+        <!-- Résultat -->
+        <div class="pa-resultat">
+          ${vainqueur ? `
+            <div class="pa-badge-vainqueur" style="color: ${COULEURS_PA[vainqueur]}; border-color: ${COULEURS_PA[vainqueur]}">
+              👑 ${nomsPA.equipes[vainqueur]}
+            </div>
+            <span class="pa-annuler" onclick="annulerMatch('${match.id}')">✕</span>
+          ` : `<span class="pa-en-attente">En attente...</span>`}
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+
+function renderEquipePA(matchId, eq, vainqueur) {
+  const estVainqueur = vainqueur === eq.equipeId;
+  const estPerdant   = vainqueur !== null && vainqueur !== eq.equipeId;
+  const couleur      = COULEURS_PA[eq.equipeId];
+
+  let classes = 'pa-equipe';
+  if (estVainqueur) classes += ' pa-vainqueur';
+  if (estPerdant)   classes += ' pa-perdant';
+  if (!vainqueur)   classes += ' pa-cliquable';
+
+  const bgColor = estVainqueur ? hexToRgbaPA(couleur, 0.15) : 'transparent';
+  const textColor = estPerdant ? '#555' : couleur;
+
+  return `
+    <div
+      class="${classes}"
+      style="border-color: ${couleur}; background-color: ${bgColor};"
+      onclick="${!vainqueur ? `cliquerVainqueur('${matchId}', ${eq.equipeId})` : ''}"
+    >
+      ${estVainqueur ? '<span class="pa-couronne">👑</span>' : ''}
+      <div class="pa-joueurs">
+        ${eq.joueurs.map(function(joueurId) {
+          return `<span class="pa-joueur" style="color: ${textColor}">${nomsPA.joueurs[joueurId]}</span>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function hexToRgbaPA(hex, alpha) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+document.addEventListener('DOMContentLoaded', initialiser);
+
+</script>
 
   </body>
 </html>

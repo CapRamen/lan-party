@@ -2334,3 +2334,442 @@ main {
   background-color: #e94560;
   color: white;
 }
+
+/* ===========================
+   ROCKET LEAGUE — MATCHS
+=========================== */
+
+.rl-round {
+  margin-bottom: 25px;
+}
+
+.rl-round-titre {
+  color: #94A3B8;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #0f3460;
+}
+
+.rl-matchs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rl-match {
+  background-color: #1a1a2e;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.rl-match-equipes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.rl-equipe {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  background-color: transparent;
+}
+
+.rl-equipe:hover {
+  filter: brightness(1.3);
+  transform: translateY(-2px);
+}
+
+.rl-vainqueur {
+  transform: translateY(-2px);
+}
+
+.rl-perdant {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.rl-perdant:hover {
+  filter: none;
+  transform: none;
+}
+
+.rl-couronne {
+  font-size: 1rem;
+}
+
+.rl-equipe-nom {
+  font-size: 0.9rem;
+}
+
+.rl-vs {
+  color: #555;
+  font-size: 0.85rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.rl-resultat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 160px;
+}
+
+.rl-badge-vainqueur {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 0.82rem;
+  font-weight: bold;
+  background-color: rgba(255,255,255,0.05);
+}
+
+.rl-annuler {
+  color: #e94560;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.rl-annuler:hover {
+  background-color: rgba(233, 69, 96, 0.2);
+}
+
+.rl-en-attente {
+  color: #555;
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rl-match {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .rl-resultat {
+    justify-content: center;
+    min-width: unset;
+  }
+}
+
+/* ===========================
+   AGE OF EMPIRES 1
+=========================== */
+
+.aoe-match {
+  background-color: #1a1a2e;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.aoe-match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.aoe-match-titre {
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.aoe-match-scoring {
+  color: #555;
+  font-size: 0.8rem;
+}
+
+.aoe-match-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.aoe-btn-egalite {
+  padding: 7px 14px;
+  background-color: rgba(148, 163, 184, 0.15);
+  color: #94A3B8;
+  border: 1px solid #94A3B8;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.2s;
+}
+
+.aoe-btn-egalite:hover {
+  background-color: rgba(148, 163, 184, 0.3);
+}
+
+.aoe-btn-reset {
+  padding: 7px 14px;
+  background-color: #0f3460;
+  color: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: background-color 0.2s;
+}
+
+.aoe-btn-reset:hover {
+  background-color: #e94560;
+  color: white;
+}
+
+.aoe-equipes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.aoe-equipe {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border-radius: 8px;
+  border: 2px solid;
+  font-weight: bold;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+  text-align: center;
+  flex-direction: column;
+}
+
+.aoe-cliquable {
+  cursor: pointer;
+}
+
+.aoe-cliquable:hover {
+  filter: brightness(0.7);
+  transform: translateY(2px);
+}
+
+.aoe-perdant {
+  opacity: 0.3;
+  cursor: pointer;
+  text-decoration: line-through;
+}
+
+.aoe-perdant:hover {
+  opacity: 0.5;
+}
+
+.aoe-vainqueur {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.aoe-egalite {
+  transform: translateY(-2px);
+}
+
+.aoe-equipe-nom {
+  font-size: 0.85rem;
+}
+
+.aoe-icone {
+  font-size: 1rem;
+}
+
+.aoe-resultat {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.aoe-resultat-victoire {
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid;
+}
+
+.aoe-resultat-egalite {
+  background-color: rgba(148, 163, 184, 0.1);
+  border: 1px solid #94A3B8;
+  color: #94A3B8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .aoe-equipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ===========================
+   PARTY ANIMALS
+=========================== */
+
+.pa-match {
+  background-color: #1a1a2e;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.pa-match-header {
+  margin-bottom: 15px;
+}
+
+.pa-match-titre {
+  color: #94A3B8;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #0f3460;
+}
+
+.pa-match-contenu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.pa-equipes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.pa-equipe {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 10px;
+  border-radius: 8px;
+  border: 2px solid;
+  transition: all 0.2s;
+  background-color: transparent;
+}
+
+.pa-cliquable {
+  cursor: pointer;
+}
+
+.pa-cliquable:hover {
+  filter: brightness(1.3);
+  transform: translateY(-2px);
+}
+
+.pa-vainqueur {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.pa-perdant {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.pa-couronne {
+  font-size: 1rem;
+}
+
+.pa-joueurs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pa-joueur {
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.pa-vs {
+  color: #555;
+  font-size: 0.82rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.pa-resultat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 160px;
+}
+
+.pa-badge-vainqueur {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 0.82rem;
+  font-weight: bold;
+  background-color: rgba(255,255,255,0.05);
+}
+
+.pa-annuler {
+  color: #e94560;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.pa-annuler:hover {
+  background-color: rgba(233, 69, 96, 0.2);
+}
+
+.pa-en-attente {
+  color: #555;
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pa-match-contenu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pa-resultat {
+    justify-content: center;
+    min-width: unset;
+  }
+}
