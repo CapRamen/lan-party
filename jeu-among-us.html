@@ -21,74 +21,305 @@
 
     <main>
 
-      <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
+  <a href="jeux.html" class="btn-retour">← Retour aux jeux</a>
 
-      <!-- EN-TÊTE JEU -->
-      <div class="jeu-page-header">
-        <div class="jeu-page-banniere">
-          <img
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg"
-            alt="Rocket League"
-            class="jeu-page-image"
-          >
-          <div class="jeu-page-overlay">
-            <div class="jeu-page-titre-bloc">
-              <h2>🔪 Among Us</h2>
-              <a href="https://store.steampowered.com/app/945360" target="_blank" class="jeu-steam-btn">
-                Voir sur Steam →
-              </a>
-            </div>
-          </div>
+  <!-- EN-TÊTE -->
+  <div class="jeu-page-header">
+    <div class="jeu-page-banniere">
+      <img
+        src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg"
+        alt="Among Us"
+        class="jeu-page-image"
+      >
+      <div class="jeu-page-overlay">
+        <div class="jeu-page-titre-bloc">
+          <h2>🔪 Among Us</h2>
+          <a href="https://store.steampowered.com/app/945360/Among_Us/" target="_blank" class="jeu-steam-btn">
+            Voir sur Steam →
+          </a>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="jeu-page-contenu">
+  <!-- FORMAT -->
+  <div class="jeu-section" style="margin-bottom: 25px;">
+    <h3>⚔️ Format</h3>
+    <div class="format-info">
+      <div class="format-tag">4 parties à 12 joueurs</div>
+      <div class="format-tag">2 Killers vs 10 Crew</div>
+      <div class="format-tag">👥 1 pt victoire Crew</div>
+      <div class="format-tag">🔪 4 pts victoire Killer</div>
+      <div class="format-tag">🏆 Max 32 pts par équipe</div>
+    </div>
+  </div>
 
-        <!-- COLONNE GAUCHE -->
-        <div class="jeu-col-gauche">
+  <!-- SCORING -->
+  <div class="jeu-section" style="margin-bottom: 25px;">
+    <h3>🏆 Scoring actuel</h3>
+    <div class="scoring-tableau" id="scoring-among-us"></div>
+  </div>
 
-          <!-- FORMAT -->
-          <div class="jeu-section">
-            <h3>⚔️ Format</h3>
-            <div class="format-info">
-              <div class="format-tag"> FFA</div>
-              <div class="format-tag">4 parties à 12 joueurs, 2 killers vs 10 crew</div>
-              <div class="format-tag">1 point par victoire en temps que crew, 4 points par victoire en temps que killer </div>
-            </div>
-          </div>
+  <!-- PARTIES -->
+  <div id="parties-au"></div>
 
-          <!-- MATCHS -->
-          <div class="jeu-section">
-            <h3>📋 Déroulement des matchs</h3>
-            <div class="matchs-liste" id="matchs-among-us"></div>
-          </div>
-
-        </div>
-
-        <!-- COLONNE DROITE -->
-        <div class="jeu-col-droite">
-
-          <!-- SCORING -->
-          <div class="jeu-section">
-            <h3>🏆 Scoring</h3>
-            <div class="scoring-tableau" id="scoring-among-us"></div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </main>
+</main>
 
     <footer>
       <p>LAN Party 2026</p>
     </footer>
 
     <script src="js/script.js"></script>
-    <script src="js/jeu.js"></script>
-    <script>
-      initialiserPageJeu('among-us');
-    </script>
+<script src="js/jeu.js"></script>
+<script>
+
+const COULEURS_AU = {
+  1: '#eb415d', 2: '#4a9eff', 3: '#4caf50', 4: '#ffd700'
+};
+
+// Équipe de chaque joueur
+const EQUIPE_JOUEUR = {
+  1:1, 2:1, 3:1, 4:2, 5:2, 6:2,
+  7:3, 8:3, 9:3, 10:4, 11:4, 12:4
+};
+
+let nomsAU = { equipes: {}, joueurs: {} };
+
+// Structure d'une partie
+// killers : [joueurId, joueurId] (max 2)
+// vainqueur : 'crew' | 'killer' | null
+let parties = {
+  p1: { killers: [], vainqueur: null },
+  p2: { killers: [], vainqueur: null },
+  p3: { killers: [], vainqueur: null },
+  p4: { killers: [], vainqueur: null },
+};
+
+// ================================
+// INITIALISATION
+// ================================
+
+function initialiser() {
+  const nomsData = localStorage.getItem('noms-lan');
+  if (nomsData) {
+    nomsAU = JSON.parse(nomsData);
+  } else {
+    for (let e = 1; e <= 4; e++) nomsAU.equipes[e] = 'Équipe ' + e;
+    for (let j = 1; j <= 12; j++) nomsAU.joueurs[j] = 'Joueur ' + j;
+  }
+
+  const saved = localStorage.getItem('au-parties');
+  if (saved) parties = JSON.parse(saved);
+
+  afficherParties();
+  afficherScoring('among-us', {});
+}
+
+function sauvegarder() {
+  localStorage.setItem('au-parties', JSON.stringify(parties));
+}
+
+// ================================
+// LOGIQUE
+// ================================
+
+function cliquerJoueur(partieId, joueurId) {
+  const partie = parties[partieId];
+  if (partie.vainqueur) return; // Partie terminée
+
+  const idx = partie.killers.indexOf(joueurId);
+
+  if (idx !== -1) {
+    // Déjà killer → retirer
+    partie.killers.splice(idx, 1);
+  } else {
+    // Ajouter killer si moins de 2
+    if (partie.killers.length >= 2) return;
+    partie.killers.push(joueurId);
+  }
+
+  sauvegarder();
+  afficherParties();
+}
+
+function cliquerVainqueur(partieId, type) {
+  const partie = parties[partieId];
+  if (partie.killers.length < 2) return; // Pas assez de killers
+
+  // Toggle
+  if (partie.vainqueur === type) {
+    partie.vainqueur = null;
+  } else {
+    partie.vainqueur = type;
+  }
+
+  sauvegarder();
+  afficherParties();
+}
+
+function reinitialiserPartie(partieId) {
+  parties[partieId] = { killers: [], vainqueur: null };
+  sauvegarder();
+  afficherParties();
+}
+
+function getCrewJoueurs(partieId) {
+  const killers = parties[partieId].killers;
+  return [1,2,3,4,5,6,7,8,9,10,11,12].filter(function(j) {
+    return !killers.includes(j);
+  });
+}
+
+// ================================
+// AFFICHAGE
+// ================================
+
+function afficherParties() {
+  const conteneur = document.getElementById('parties-au');
+  if (!conteneur) return;
+
+  conteneur.innerHTML = ['p1','p2','p3','p4'].map(function(partieId, idx) {
+    return renderPartie(partieId, idx + 1);
+  }).join('');
+}
+
+function renderPartie(partieId, numero) {
+  const partie = parties[partieId];
+  const crew = getCrewJoueurs(partieId);
+  const killers = partie.killers;
+  const peutVoter = killers.length === 2;
+
+  return `
+    <div class="au-partie jeu-section" style="margin-bottom: 25px;">
+
+      <div class="au-partie-header">
+        <h3>🎮 Partie ${numero}</h3>
+        <button class="au-btn-reset" onclick="reinitialiserPartie('${partieId}')">✕ Réinitialiser</button>
+      </div>
+
+      <div class="au-tableaux">
+
+        <!-- CREW -->
+        <div class="au-tableau au-tableau-crew">
+          <div class="au-tableau-titre">
+            👥 Crew
+            <span class="au-tableau-count">${crew.length}/10</span>
+          </div>
+          <div class="au-joueurs-liste">
+            ${crew.map(function(j) {
+              return renderJoueurAU(partieId, j, 'crew', partie);
+            }).join('')}
+            ${crew.length === 0 ? '<span class="au-vide">—</span>' : ''}
+          </div>
+          ${peutVoter ? `
+            <button
+              class="au-btn-victoire ${partie.vainqueur === 'crew' ? 'au-btn-actif-crew' : ''}"
+              onclick="cliquerVainqueur('${partieId}', 'crew')"
+            >
+              ${partie.vainqueur === 'crew' ? '✅ Crew a gagné !' : '✅ Crew gagne'}
+            </button>
+          ` : ''}
+        </div>
+
+        <!-- KILLERS -->
+        <div class="au-tableau au-tableau-killer">
+          <div class="au-tableau-titre">
+            🔪 Killers
+            <span class="au-tableau-count">${killers.length}/2</span>
+          </div>
+          <div class="au-joueurs-liste">
+            ${killers.map(function(j) {
+              return renderJoueurAU(partieId, j, 'killer', partie);
+            }).join('')}
+            ${killers.length === 0 ? '<span class="au-vide">Clique sur des joueurs dans Crew</span>' : ''}
+          </div>
+          ${peutVoter ? `
+            <button
+              class="au-btn-victoire ${partie.vainqueur === 'killer' ? 'au-btn-actif-killer' : ''}"
+              onclick="cliquerVainqueur('${partieId}', 'killer')"
+            >
+              ${partie.vainqueur === 'killer' ? '🔪 Killers ont gagné !' : '🔪 Killers gagnent'}
+            </button>
+          ` : ''}
+        </div>
+
+      </div>
+
+      <!-- RÉSULTAT -->
+      ${partie.vainqueur ? renderResultatAU(partieId, partie) : ''}
+
+    </div>
+  `;
+}
+
+function renderJoueurAU(partieId, joueurId, role, partie) {
+  const equipeId = EQUIPE_JOUEUR[joueurId];
+  const couleur = COULEURS_AU[equipeId];
+  const nomJoueur = nomsAU.joueurs[joueurId];
+  const nomEquipe = nomsAU.equipes[equipeId];
+  const estKiller = role === 'killer';
+  const partieTerminee = partie.vainqueur !== null;
+
+  return `
+    <div
+      class="au-joueur ${estKiller ? 'au-joueur-killer' : 'au-joueur-crew'} ${partieTerminee ? '' : 'au-joueur-cliquable'}"
+      style="border-color: ${couleur}; color: ${couleur};"
+      onclick="${partieTerminee ? '' : `cliquerJoueur('${partieId}', ${joueurId})`}"
+      title="${partieTerminee ? '' : estKiller ? 'Retirer des Killers' : 'Définir comme Killer'}"
+    >
+      <span class="au-joueur-nom">${nomJoueur}</span>
+      <span class="au-joueur-equipe">${nomEquipe}</span>
+      ${estKiller ? '<span class="au-joueur-icone">🔪</span>' : ''}
+    </div>
+  `;
+}
+
+function renderResultatAU(partieId, partie) {
+  const killers = partie.killers;
+  const crew = getCrewJoueurs(partieId);
+  const vainqueur = partie.vainqueur;
+
+  // Calculer les points par équipe
+  const points = {};
+  for (let e = 1; e <= 4; e++) points[e] = 0;
+
+  if (vainqueur === 'killer') {
+    killers.forEach(function(j) {
+      points[EQUIPE_JOUEUR[j]] += 4;
+    });
+  } else {
+    crew.forEach(function(j) {
+      points[EQUIPE_JOUEUR[j]] += 1;
+    });
+  }
+
+  // Filtrer les équipes qui ont marqué
+  const equipesPts = Object.keys(points)
+    .filter(function(e) { return points[e] > 0; })
+    .sort(function(a, b) { return points[b] - points[a]; });
+
+  return `
+    <div class="au-resultat ${vainqueur === 'killer' ? 'au-resultat-killer' : 'au-resultat-crew'}">
+      <div class="au-resultat-titre">
+        ${vainqueur === 'killer' ? '🔪 Les Killers ont gagné !' : '✅ Le Crew a gagné !'}
+      </div>
+      <div class="au-resultat-points">
+        ${equipesPts.map(function(e) {
+          return `
+            <div class="au-resultat-ligne" style="color: ${COULEURS_AU[e]}">
+              <span>${nomsAU.equipes[e]}</span>
+              <span>+${points[e]} pt${points[e] > 1 ? 's' : ''}</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', initialiser);
+
+</script>
 
   </body>
 </html>
