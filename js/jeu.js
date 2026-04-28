@@ -153,6 +153,7 @@ function afficherMatchsWNTGD() {
       <div class="match-ligne">Durée : 1h30</div>
       <div class="match-ligne">On retient la plus grande profondeur atteinte</div>
       <div class="match-ligne">Peu importe le nombre de resets</div>
+      <div class="match-ligne">Sous marins autorisées : The Crevette / The Requin</div>
       <div class="match-ligne capture-info">📸 Une capture d'écran comme preuve est requise</div>
     </div>
   `;

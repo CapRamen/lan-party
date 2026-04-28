@@ -158,3 +158,7 @@ function getValue(id, defaut) {
   const el = document.getElementById(id);
   return el && el.value.trim() !== '' ? el.value.trim() : defaut;
 }
+
+// Exposer les fonctions globalement
+window.sauvegarderNoms = sauvegarderNoms;
+window.reinitialiserNoms = reinitialiserNoms;

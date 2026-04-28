@@ -7,6 +7,14 @@
   </head>
   <body>
 
+     <!-- OVERLAY DE CHARGEMENT -->
+  <div id="loading-overlay">
+    <div class="loading-carte">
+      <div class="loading-spinner"></div>
+      <p>Connexion en cours...</p>
+    </div>
+  </div>
+
     <header>
       <h1>🎮 LAN : Legacy</h1>
       <nav>
@@ -78,9 +86,11 @@
       <p>LAN : Legacy 2026</p>
     </footer>
 
-    <script src="js/scoring.js"></script>
-    <script src="js/script.js"></script>
-<script src="js/jeu.js"></script>
+<script type="module" src="js/app.js"></script>
+<script type="module" src="js/scoring.js"></script>
+<script type="module" src="js/script.js"></script>
+<script type="module" src="js/jeu.js"></script>
+
 <script>
 
 const COULEURS_RL = {
@@ -236,6 +246,10 @@ function calculerPointsRL() {
   }
 
 document.addEventListener('DOMContentLoaded', initialiser);
+
+window.cliquerEquipe = cliquerEquipe;
+  window.annulerMatch = annulerMatch;
+  window.calculerPointsRL = calculerPointsRL;
 
 </script>
 

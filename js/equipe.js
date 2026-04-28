@@ -296,3 +296,5 @@ function configRadar(petit) {
 }
   };
 }
+
+window.initialiserPageEquipe = initialiserPageEquipe;

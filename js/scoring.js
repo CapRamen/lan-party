@@ -146,3 +146,12 @@ function appliquerPointsCalcules(jeuId, points, conteneurId) {
   const noms = chargerNomsEquipes();
   afficherBlocScoring(jeuId, conteneurId, noms);
 }
+
+// Exposer les fonctions globalement
+window.afficherBlocScoring = afficherBlocScoring;
+window.activerEditionScoring = activerEditionScoring;
+window.appliquerPointsCalcules = appliquerPointsCalcules;
+window.chargerNomsEquipes = chargerNomsEquipes;
+window.chargerScoresLAN = chargerScoresLAN;
+window.sauvegarderScoresLAN = sauvegarderScoresLAN;
+window.mettreAJourScore = mettreAJourScore;

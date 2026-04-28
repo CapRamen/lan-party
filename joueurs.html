@@ -7,6 +7,14 @@
   </head>
   <body>
     
+     <!-- OVERLAY DE CHARGEMENT -->
+  <div id="loading-overlay">
+    <div class="loading-carte">
+      <div class="loading-spinner"></div>
+      <p>Connexion en cours...</p>
+    </div>
+  </div>
+
     <header>
       <h1>🎮 LAN : Legacy</h1>
       <nav>
@@ -918,7 +926,16 @@
       <p>LAN 2026</p>
     </footer>
 
-<script src="js/script.js"></script>
+<script type="module" src="js/app.js"></script>
+<script type="module" src="js/script.js"></script>
+<script type="module">
+  // Exposer les fonctions du script inline
+  window.ouvrirSelecteurImage = ouvrirSelecteurImage;
+  window.validerCrop = validerCrop;
+  window.fermerCrop = fermerCrop;
+  window.supprimerAvatar = supprimerAvatar;
+  window.sauvegarderPseudo = sauvegarderPseudo;
+</script>
 
 <script>
   // Variables globales pour le recadrage

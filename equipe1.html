@@ -8,6 +8,14 @@
   </head>
   <body>
 
+     <!-- OVERLAY DE CHARGEMENT -->
+  <div id="loading-overlay">
+    <div class="loading-carte">
+      <div class="loading-spinner"></div>
+      <p>Connexion en cours...</p>
+    </div>
+  </div>
+  
     <header>
       <h1>🎮 LAN : Legacy</h1>
       <nav>
@@ -97,12 +105,13 @@
       <p>LAN 2026</p>
     </footer>
 
-    <script src="js/script.js"></script>
-    <script src="js/equipe.js"></script>
-    <script>
-      // Initialise la page pour l'équipe 1
-      initialiserPageEquipe(1, [1, 2, 3]);
-    </script>
+   <script type="module" src="js/app.js"></script>
+<script type="module" src="js/script.js"></script>
+<script type="module" src="js/equipe.js"></script>
+    <script type="module">
+  await import('./js/equipe.js');
+  initialiserPageEquipe(1, [1, 2, 3]);
+</script>
 
   </body>
 </html>
