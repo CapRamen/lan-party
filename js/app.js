@@ -1,7 +1,7 @@
 // ================================
 // INITIALISATION DE L'APPLICATION
 // ================================
-
+import { fbSet, fbGet, fbWatch } from './firebase.js';
 import { chargerDepuisFirebase, activerTempsReel } from './sync.js';
 
 function afficherChargement(visible) {

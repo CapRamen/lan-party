@@ -49,4 +49,7 @@ function fbWatch(collectionId, docId, callback) {
   });
 }
 
+window.fbSet = fbSet;
+window.fbGet = fbGet;
+window.fbWatch = fbWatch;
 export { db, fbSet, fbGet, fbWatch };
