@@ -64,7 +64,11 @@ function sauvegarderNoms() {
   }
 
   // Sauvegarder dans localStorage
-  localStorage.setItem('noms-lan', JSON.stringify(noms));
+  const valeurNoms = JSON.stringify(noms);
+localStorage.setItem('noms-lan', valeurNoms);
+if (typeof syncVersFirebase === 'function') {
+  syncVersFirebase('noms-lan', valeurNoms);
+}
 
   // Afficher confirmation
   afficherConfirmation('✅ Noms sauvegardés ! Les changements sont appliqués sur tout le site.', 'succes');
@@ -150,7 +154,11 @@ function sauvegarderInfosAccueil() {
     jeux:           getValue('info-jeux',            '9 jeux au programme'),
     format:         getValue('info-format',          'Compétition par équipes'),
   };
-  localStorage.setItem('infos-accueil', JSON.stringify(infos));
+const valeurInfos = JSON.stringify(infos);
+localStorage.setItem('infos-accueil', valeurInfos);
+if (typeof syncVersFirebase === 'function') {
+  syncVersFirebase('infos-accueil', valeurInfos);
+}
 }
 
 // Helper : lit un input, retourne la valeur ou un défaut si vide

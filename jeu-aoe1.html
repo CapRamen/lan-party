@@ -133,7 +133,11 @@ afficherBlocScoring('aoe1', 'scoring-aoe1', noms);
 }
 
 function sauvegarder() {
-  localStorage.setItem('aoe1-resultats', JSON.stringify(matchs));
+  const valeur = JSON.stringify(matchs);
+  localStorage.setItem('aoe1-resultats', valeur);
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase('aoe1-resultats', valeur);
+  }
 }
 
 // ================================

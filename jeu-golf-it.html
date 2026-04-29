@@ -161,10 +161,11 @@ afficherBlocScoring('golf-it', 'scoring-golf-it', noms);
 }
 
 function sauvegarder() {
-  localStorage.setItem('golf-scores', JSON.stringify({
-    scores: scoresGolf,
-    classe: classe
-  }));
+  const valeur = JSON.stringify({ scores: scoresGolf, classe: classe });
+  localStorage.setItem('golf-scores', valeur);
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase('golf-scores', valeur);
+  }
 }
 
 // ================================

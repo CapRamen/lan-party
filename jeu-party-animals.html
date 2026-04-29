@@ -158,7 +158,11 @@ afficherBlocScoring('party-animals', 'scoring-party-animals', noms);
 }
 
 function sauvegarder() {
-  localStorage.setItem('pa-resultats', JSON.stringify(resultatsPA));
+  const valeur = JSON.stringify(resultatsPA);
+  localStorage.setItem('pa-resultats', valeur);
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase('pa-resultats', valeur);
+  }
 }
 
 // ================================

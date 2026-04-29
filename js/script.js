@@ -74,7 +74,11 @@ function chargerScores() {
 
 // Sauvegarde les scores dans localStorage
 function sauvegarderScores(scores) {
-  localStorage.setItem('scores-lan', JSON.stringify(scores));
+  const valeur = JSON.stringify(scores);
+  localStorage.setItem('scores-lan', valeur);
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase('scores-lan', valeur);
+  }
 }
 
 // Affiche les scores dans le tableau

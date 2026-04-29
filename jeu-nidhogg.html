@@ -566,8 +566,14 @@ function renderVainqueurFinal() {
 // ================================
 
 function sauvegarder() {
-  localStorage.setItem('nidhogg-groupes',  JSON.stringify(groupes));
-  localStorage.setItem('nidhogg-bracket',  JSON.stringify(bracketFinale));
+  const valeurGroupes = JSON.stringify(groupes);
+  const valeurBracket = JSON.stringify(bracketFinale);
+  localStorage.setItem('nidhogg-groupes', valeurGroupes);
+  localStorage.setItem('nidhogg-bracket', valeurBracket);
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase('nidhogg-groupes', valeurGroupes);
+    syncVersFirebase('nidhogg-bracket', valeurBracket);
+  }
 }
 
 function reinitialiserTout() {

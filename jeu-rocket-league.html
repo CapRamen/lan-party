@@ -129,7 +129,11 @@ function initialiser() {
 }
 
 function sauvegarder() {
-  localStorage.setItem('rl-resultats', JSON.stringify(resultats));
+  const valeur = JSON.stringify(resultats);
+  localStorage.setItem('rl-resultats', valeur);
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase('rl-resultats', valeur);
+  }
 }
 
 function cliquerEquipe(matchId, equipeId) {

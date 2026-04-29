@@ -138,7 +138,11 @@ afficherBlocScoring('among-us', 'scoring-among-us', noms);
 }
 
 function sauvegarder() {
-  localStorage.setItem('au-parties', JSON.stringify(parties));
+  const valeur = JSON.stringify(parties);
+  localStorage.setItem('au-parties', valeur);
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase('au-parties', valeur);
+  }
 }
 
 // ================================

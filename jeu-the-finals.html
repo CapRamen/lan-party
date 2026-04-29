@@ -159,7 +159,11 @@ afficherBlocScoring('the-finals', 'scoring-the-finals', nomsScoring);
 }
 
 function sauvegarderBracket() {
-  localStorage.setItem('bracket-the-finals', JSON.stringify(bracket));
+  const valeur = JSON.stringify(bracket);
+  localStorage.setItem('bracket-the-finals', valeur);
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase('bracket-the-finals', valeur);
+  }
 }
 
 // ================================

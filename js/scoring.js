@@ -25,7 +25,11 @@ function chargerScoresLAN() {
 
 // Sauvegarde les scores dans localStorage
 function sauvegarderScoresLAN(scores) {
-  localStorage.setItem('scores-lan', JSON.stringify(scores));
+  const valeur = JSON.stringify(scores);
+  localStorage.setItem('scores-lan', valeur);
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase('scores-lan', valeur);
+  }
 }
 
 // Met à jour le score d'un jeu pour une équipe
