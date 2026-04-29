@@ -1107,19 +1107,25 @@ function sauvegarderPseudo(input) {
   const type = input.getAttribute('data-type');
   const valeur = input.value.trim();
 
-  // Charger les pseudos existants
   const data = localStorage.getItem('pseudos-' + joueurId);
   const pseudos = data ? JSON.parse(data) : {};
 
-  // Mettre à jour ou supprimer
   if (valeur !== '') {
     pseudos[type] = valeur;
   } else {
     delete pseudos[type];
   }
 
-  // Sauvegarder
-  localStorage.setItem('pseudos-' + joueurId, JSON.stringify(pseudos));
+  const cle = 'pseudos-' + joueurId;
+  const valeurJSON = JSON.stringify(pseudos);
+
+  localStorage.setItem(cle, valeurJSON);
+
+  // Envoyer à Firebase directement
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase(cle, valeurJSON);
+    console.log('🔥 Sync Firebase pseudo :', joueurId);
+  }
 }
 
 // Charge tous les pseudos au démarrage

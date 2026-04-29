@@ -9,7 +9,16 @@ function sauvegarderNotes(joueurId) {
     const nomJeu = input.getAttribute('data-jeu');
     notes[nomJeu] = input.value;
   });
-  localStorage.setItem('notes-' + joueurId, JSON.stringify(notes));
+
+  const cle = 'notes-' + joueurId;
+  const valeur = JSON.stringify(notes);
+  localStorage.setItem(cle, valeur);
+
+  // Sync Firebase
+  if (typeof syncVersFirebase === 'function') {
+    syncVersFirebase(cle, valeur);
+  }
+
   const confirmation = document.getElementById('confirm-' + joueurId);
   confirmation.textContent = '✅ Notes sauvegardées !';
   setTimeout(function() {
